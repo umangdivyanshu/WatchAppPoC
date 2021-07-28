@@ -13,7 +13,7 @@ void main() {
   testWidgets("adding and removing items from the cart",
       (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
-    await tester.pumpAndSettle(Duration(seconds: 10));
+    await tester.pumpAndSettle(Duration(seconds: 5));
     print('App launched');
     expect(
         find.text(
