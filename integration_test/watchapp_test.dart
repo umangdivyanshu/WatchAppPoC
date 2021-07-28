@@ -13,7 +13,7 @@ void main() {
   testWidgets("adding and removing items from the cart",
       (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
-    await tester.pumpAndSettle(Duration(seconds: 5));
+    await tester.pumpAndSettle(Duration(seconds: 2));
     print('App launched');
     expect(
         find.text(
@@ -92,7 +92,7 @@ void main() {
     print("Waited 30 seconds");
     //expect(find.byKey(ValueKey('successfulAlert')), findsOneWidget);
     expect(find.text('Product Added Successfully'), findsOneWidget);
-    await tester.pumpAndSettle(Duration(seconds: 10));
+    await tester.pumpAndSettle(Duration(seconds: 5));
     //var alert = await tester.allElements.toList();
     // final alertbox = tester.widget(find.byKey(ValueKey('successfulAlert')));
     //await tester.pumpFrames(alertbox, Duration(seconds: 30));
