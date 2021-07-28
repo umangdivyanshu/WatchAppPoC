@@ -17,14 +17,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   List<Product> productItems = [];
   List<Product> cartItems = [];
   List<String> cartItemIds = [];
   int cartCount = 0;
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-  new GlobalKey<RefreshIndicatorState>();
+      new GlobalKey<RefreshIndicatorState>();
 
   @override
   void initState() {
@@ -33,77 +32,69 @@ class _HomeScreenState extends State<HomeScreen> {
     getProductData();
   }
 
-
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar:AppBar(
-      title: Text("Buy Watches!"),
-      actions: <Widget>[
-        Stack(
-          children: <Widget>[
-            IconButton(
-                icon: Icon(Icons.shopping_cart),
-                onPressed: () async {
-                  await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              ProductCartPage(productList: cartItems)));
-                  setState(() {
-                    cartCount = this.cartItems.length;
-                  });
-                }),
-            Positioned(
-                right: 11,
-                top: 11,
-                child: Container(
-                  padding: EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(6)),
-                  constraints: BoxConstraints(minWidth: 12, minHeight: 12),
-                  child: Text(
-                    '$cartCount',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 8,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Buy Watches!"),
+        actions: <Widget>[
+          Stack(
+            children: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.shopping_cart),
+                  onPressed: () async {
+                    await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ProductCartPage(productList: cartItems)));
+                    setState(() {
+                      cartCount = this.cartItems.length;
+                    });
+                  }),
+              Positioned(
+                  right: 11,
+                  top: 11,
+                  child: Container(
+                    padding: EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(6)),
+                    constraints: BoxConstraints(minWidth: 12, minHeight: 12),
+                    child: Text(
+                      '$cartCount',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 8,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
-                  ),
-                ))
-          ],
-        ),
-      ],
-    ),
-    body: homeBody(),
-    floatingActionButton: FloatingActionButton(
-      onPressed: () async {
-        await Navigator.push(context,
-            MaterialPageRoute(builder: (context) => AddProductPage()));
-        setState(() {});
-      },
-      child: Icon(Icons.add),
-      backgroundColor: Colors.teal,
-    ),
-
-  );
-}
-
-  Widget myWidget(String text) {
-    return Text(
-      text,
-        style: kProductTitleTextStyle,
-        textAlign: kProductTextAligment
+                  ))
+            ],
+          ),
+        ],
+      ),
+      body: homeBody(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await Navigator.push(context,
+              MaterialPageRoute(builder: (context) => AddProductPage()));
+          setState(() {});
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.teal,
+      ),
     );
   }
 
+  Widget myWidget(String text) {
+    return Text(text,
+        style: kProductTitleTextStyle, textAlign: kProductTextAligment);
+  }
+
   Widget myWidget2(String text) {
-    return Text(
-        text,
-        style: kProductDescriptionTextStyle,
-        textAlign: kProductTextAligment
-    );
+    return Text(text,
+        style: kProductDescriptionTextStyle, textAlign: kProductTextAligment);
   }
 
   // BoxDecoration myBoxDecoration() {
@@ -123,80 +114,88 @@ Widget build(BuildContext context) {
     return SafeArea(
         child: productItems.length != 0
             ? RefreshIndicator(
-          key: _refreshIndicatorKey,
-          onRefresh: getProductData,
-          child: OrientationBuilder(builder: (context, orientation) {
-            return GridView.count(
-              crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
-              childAspectRatio: itemWidth / itemHeight,
-              crossAxisSpacing: 5,
-              mainAxisSpacing: 5,
-              padding: EdgeInsets.all(5.0),
-              children: productItems
-                  .map(
-                    (data) => GestureDetector(
-                    onTap: () async {
-                      await Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ProductDetailPage(productDetails: data,)
-                          ));
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      color: Colors.white,
-                      child: Center(
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.network(
-                                  Uri.parse(data.imageUrl).isAbsolute ? data.imageUrl : "https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg",
-                                  width: 250,
-                                  height: 100),
-                              myWidget(data.title),
-                              myWidget2(data.description),
-                              myWidget2(data.price.toString()),
+                key: _refreshIndicatorKey,
+                onRefresh: getProductData,
+                child: OrientationBuilder(builder: (context, orientation) {
+                  return GridView.count(
+                    crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
+                    childAspectRatio: itemWidth / itemHeight,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                    padding: EdgeInsets.all(5.0),
+                    children: productItems
+                        .map(
+                          (data) => GestureDetector(
+                              onTap: () async {
+                                await Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ProductDetailPage(
+                                              productDetails: data,
+                                            )));
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                color: Colors.white,
+                                child: Center(
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Image.network(
+                                            Uri.parse(data.imageUrl).isAbsolute
+                                                ? data.imageUrl
+                                                : "https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg",
+                                            width: 250,
+                                            height: 100),
+                                        myWidget(data.title),
+                                        myWidget2(data.description),
+                                        myWidget2(data.price.toString()),
 
-                              // Text(data.title,
-                              //     style: kProductTitleTextStyle,
-                              //     textAlign: kProductTextAligment),
-                              // Text(data.description,
-                              //     style: kProductDescriptionTextStyle,
-                              //     textAlign: kProductTextAligment),
-                              // Text(data.price.toString(),
-                              //     style: kProductPriceTextStyle,
-                              //     textAlign: kProductTextAligment),
-                              Container(
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.teal,
-                                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                                ),
-                                  child: Text(
-                                    this.cartItems.contains(data)
-                                        ? 'Remove from Cart'
-                                        : 'Add to Cart',
-                                    style: TextStyle(color: Colors.white),
+                                        // Text(data.title,
+                                        //     style: kProductTitleTextStyle,
+                                        //     textAlign: kProductTextAligment),
+                                        // Text(data.description,
+                                        //     style: kProductDescriptionTextStyle,
+                                        //     textAlign: kProductTextAligment),
+                                        // Text(data.price.toString(),
+                                        //     style: kProductPriceTextStyle,
+                                        //     textAlign: kProductTextAligment),
+                                        Container(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Colors.teal,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 50, vertical: 20),
+                                            ),
+                                            // key: ValueKey(
+                                            //   data.title + ' button'),
+                                            child: Text(
+                                              this.cartItems.contains(data)
+                                                  ? 'Remove from Cart'
+                                                  : 'Add to Cart',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            onPressed: () {
+                                              this.addToCart(data);
+                                            },
+                                          ),
+                                          margin: EdgeInsets.only(top: 20.0),
+                                        )
+                                      ],
+                                    ),
                                   ),
-                                  onPressed: () {
-                                    this.addToCart(data);
-                                  },
                                 ),
-                                margin: EdgeInsets.only(top: 20.0),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    )),
+                              )),
+                        )
+                        .toList(),
+                  );
+                }),
               )
-                  .toList(),
-            );
-          }),
-        )
             : Center(child: CircularProgressIndicator()));
   }
 
@@ -233,11 +232,10 @@ Widget build(BuildContext context) {
     }
 
     setState(() {
-      if(productItems.isNotEmpty)
-        {
-          productItems.removeRange(0, productItems.length);
-        }
-       productItems.addAll(items);
+      if (productItems.isNotEmpty) {
+        productItems.removeRange(0, productItems.length);
+      }
+      productItems.addAll(items);
     });
     // Navigator.push(context, MaterialPageRoute(builder: (context) {
     //   return LocationScreen(
@@ -245,8 +243,4 @@ Widget build(BuildContext context) {
     //   );
     // }));
   }
-
-
 }
-
-

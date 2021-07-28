@@ -23,6 +23,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  integration_test:
+    sdk: flutter
 
 flutter:
 
@@ -30,8 +32,8 @@ flutter:
 
   assets:
    - images/
-   - icons/
-   - misc/
+  #  - icons/
+  #  - misc/
 
   fonts:
     - family: Oswald
