@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               IconButton(
                   icon: Icon(Icons.shopping_cart),
+                  key: ValueKey('cartIcon'),
                   onPressed: () async {
                     await Navigator.push(
                         context,

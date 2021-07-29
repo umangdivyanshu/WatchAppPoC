@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               SizedBox(
-                height: 30,
+                height: 25,
               ),
               Text(
                 'Login Screen',
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 50,
+                height: 35,
               ),
               Hero(
                 tag: 'login',
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               SizedBox(
-                height: 48.0,
+                height: 38.0,
               ),
               TextFormField(
                 key: ValueKey('loginTxtKey'),
@@ -58,9 +58,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   //Do something with the user input.
                 },
                 validator: (String? value) {
-                  return (value == null || value.isEmpty)
-                      ? "Email id is required."
-                      : null;
+                  // return (value == null || value.isEmpty)
+                  //     ? "Email id is required."
+                  //     : null;
+                  if (value == null || value.isEmpty) {
+                    return "Email id is required.";
+                  } else if (value != 'user') {
+                    return "Incorrect Email";
+                  } else {
+                    return null;
+                  }
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your email',
@@ -90,9 +97,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   //Do something with the user input.
                 },
                 validator: (String? value) {
-                  return (value == null || value.isEmpty)
-                      ? "Password is required."
-                      : null;
+                  // return (value == null || value.isEmpty)
+                  //     ? "Password is required."
+                  //     : null;
+                  if (value == null || value.isEmpty) {
+                    return "Password is required.";
+                  } else if (value != 'password') {
+                    return "Incorrect password";
+                  } else {
+                    return null;
+                  }
                 },
                 decoration: InputDecoration(
                   hintText: 'Enter your password.',
