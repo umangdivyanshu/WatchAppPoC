@@ -140,7 +140,7 @@ void main() {
     // await tester.tap(saveBtn);
     await tester.tap(find.byType(TextButton).first);
     print("Save button tapped");
-    await tester.pumpAndSettle(Duration(seconds: 10));
+    await tester.pumpAndSettle(Duration(seconds: 5));
     print("Waited 30 seconds");
     //expect(find.byKey(ValueKey('successfulAlert')), findsOneWidget);
     expect(find.text('Product Added Successfully'), findsOneWidget);
