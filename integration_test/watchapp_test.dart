@@ -6,12 +6,79 @@ import 'package:pocwatchapp/screens/add_product.dart';
 import 'package:pocwatchapp/screens/cart_page.dart';
 import 'package:pocwatchapp/screens/components/home_body.dart';
 import 'package:pocwatchapp/screens/home_screen.dart';
+import 'package:pocwatchapp/screens/login_screen.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets("adding and removing items from the cart",
-      (WidgetTester tester) async {
+  // testWidgets("adding and removing items from the cart",
+  //     (WidgetTester tester) async {
+  //   await tester.pumpWidget(MyApp());
+  //   await tester.pumpAndSettle(Duration(seconds: 2));
+  //   print('App launched');
+  //   expect(
+  //       find.text(
+  //           'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+  //       findsOneWidget);
+
+  //   //identifying using widget type
+  //   await tester.tap(find.byType(ElevatedButton));
+  //   await tester.pumpAndSettle();
+
+  //   //validating user has moved to Login Page
+  //   expect(
+  //       find.text(
+  //           'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+  //       findsNothing);
+  //   expect(find.byType(LoginScreen), findsOneWidget);
+
+  //   //entering email
+  //   var emailInput = find.byKey(ValueKey('loginTxtKey'));
+  //   await tester.enterText(emailInput, 'user');
+
+  //   //entering password
+  //   var passwordInput = find.byKey(ValueKey('passwordTxtKey'));
+  //   await tester.enterText(passwordInput, 'password');
+
+  //   //tapping login button
+  //   var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
+  //   await tester.tap(loginBtn);
+  //   await tester.pumpAndSettle();
+
+  //   //validating error message and current state
+  //   expect(find.text('Email id is required.'), findsNothing);
+  //   expect(find.text('Password is required.'), findsNothing);
+  //   expect(find.byType(HomeScreen), findsOneWidget);
+
+  //   //adding products to the cart
+  //   //await tester.tap(find.byType(ElevatedButton).first);
+  //   // await tester.tap(find.byKey(ValueKey('Armani button')));
+  //   await tester.tap(find.byType(ElevatedButton).at(2));
+  //   await tester.pumpAndSettle(Duration(seconds: 1));
+
+  //   //tapping on cart icon
+  //   await tester.scrollUntilVisible(find.byIcon(Icons.shopping_cart), 0.5);
+
+  //   await tester.tap(find.byIcon(Icons.shopping_cart));
+  //   await tester.pumpAndSettle(Duration(seconds: 5));
+  //   //await tester.tap(find.byKey(ValueKey('cartIcon')));
+  //   // await tester.pumpAndSettle(Duration(seconds: 5));
+  //   //await tester.tapAt(Offset(11, 11));
+  //   //await tester.pumpAndSettle(Duration(seconds: 5));
+
+  //   //validating user has moved to Cart Page
+  //   expect(find.byType(ProductCartPage), findsOneWidget);
+  //   expect(find.text('Remove from Cart'), findsOneWidget);
+
+  //   //removing the product from the cart
+  //   await tester.tap(find.byType(ElevatedButton).first);
+  //   await tester.pumpAndSettle(Duration(seconds: 1));
+
+  //   //validating item has been removed from the cart
+  //   expect(find.text('Cart is Empty'), findsOneWidget);
+  // });
+
+  testWidgets("adding watches to the cart ", (WidgetTester tester) async {
     await tester.pumpWidget(MyApp());
     await tester.pumpAndSettle(Duration(seconds: 2));
     print('App launched');
@@ -24,47 +91,32 @@ void main() {
     await tester.tap(find.byType(ElevatedButton));
     await tester.pumpAndSettle();
 
-    //validating user has moved to Product Listing Page
+    //validating user has moved to Login Page
     expect(
         find.text(
             'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
         findsNothing);
+    expect(find.byType(LoginScreen), findsOneWidget);
+
+    //entering email
+    var emailInput = find.byKey(ValueKey('loginTxtKey'));
+    await tester.enterText(emailInput, 'user');
+
+    //entering password
+    var passwordInput = find.byKey(ValueKey('passwordTxtKey'));
+    await tester.enterText(passwordInput, 'password');
+
+    //tapping login button
+    var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
+    await tester.tap(loginBtn);
+    await tester.pumpAndSettle();
+
+    //validating error message and current state
+    expect(find.text('Email id is required.'), findsNothing);
+    expect(find.text('Password is required.'), findsNothing);
     expect(find.byType(HomeScreen), findsOneWidget);
 
-    //adding products to the cart
-    //await tester.tap(find.byType(ElevatedButton).first);
-    // await tester.tap(find.byKey(ValueKey('Armani button')));
-    await tester.tap(find.byType(ElevatedButton).at(3));
-    await tester.pumpAndSettle(Duration(seconds: 1));
-
-    //tapping on cart icon
-    await tester.tap(find.byIcon(Icons.shopping_cart));
-    await tester.pumpAndSettle();
-
-    //validating user has moved to Cart Page
-    expect(find.byType(ProductCartPage), findsOneWidget);
-    expect(find.text('Remove from Cart'), findsOneWidget);
-
-    //removing the product from the cart
-    await tester.tap(find.byType(ElevatedButton).first);
-    await tester.pumpAndSettle(Duration(seconds: 1));
-
-    //validating item has been removed from the cart
-    expect(find.text('Cart is Empty'), findsOneWidget);
-  });
-
-  testWidgets("adding watches to the cart ", (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    await tester.pumpAndSettle();
-    expect(
-        find.text(
-            'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-        findsOneWidget);
-
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pumpAndSettle();
-
-    expect(find.byType(HomeScreen), findsOneWidget);
+    //tapping floating add icon
     await tester.tap(find.byIcon(Icons.add));
     await tester.pumpAndSettle(Duration(seconds: 1));
     expect(find.byType(MyCustomForm), findsOneWidget);

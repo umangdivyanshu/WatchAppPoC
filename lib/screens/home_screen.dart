@@ -8,6 +8,7 @@ import 'package:pocwatchapp/models/product_model.dart';
 import 'package:pocwatchapp/screens/add_product.dart';
 import 'package:pocwatchapp/utilities/constants.dart';
 import 'package:pocwatchapp/screens/cart_page.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
               IconButton(
                   icon: Icon(Icons.shopping_cart),
+                  key: ValueKey('cartIcon'),
                   onPressed: () async {
                     await Navigator.push(
                         context,
@@ -106,7 +108,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget homeBody() {
     var size = MediaQuery.of(context).size;
     /*24 is for notification bar on Android*/
-    final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    //final double itemHeight = (size.height - kToolbarHeight - 24) / 2;
+    double itemHeight;
+    if (kIsWeb) {
+      itemHeight = size.height;
+      // running on the web!
+    } else {
+      itemHeight = (size.height - kToolbarHeight - 24) / 2;
+      // NOT running on the web! You can check for additional platforms here.
+    }
     final double itemWidth = size.width / 2;
     print(itemWidth);
     print(itemHeight);
