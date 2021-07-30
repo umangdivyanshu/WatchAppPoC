@@ -18,7 +18,7 @@ workflows:
         chromedriver --port=4444 &
         flutter config --enable-web
         ##flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
-        flutter -d web-server chrome test --machine > test-results/flutter.json integration_test --release --browser-name 
+        flutter -d web-server test --machine > test-results/flutter.json integration_test --release --browser-name chrome
     
     artifacts:
       - build/**/outputs/**/mapping.txt
