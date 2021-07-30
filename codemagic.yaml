@@ -12,14 +12,13 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
-       - name: 'Flutter integration test for web on Chrome'
-         script: |
-              mkdir -p test-results
-              chromedriver --port=4444 &
-              flutter config --enable-web
-              flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
-    scripts:
-     - |
+      - |
+        # execute integration test on web
+        mkdir -p test-results
+        chromedriver --port=4444 &
+        flutter config --enable-web
+        flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
+      - |
         # set up debug keystore
         rm -f ~/.android/debug.keystore
         keytool -genkeypair \
@@ -31,7 +30,7 @@ workflows:
           -keyalg 'RSA' \
           -keysize 2048 \
           -validity 10000
-     - |
+      - |
         # set up local properties
         echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
         - flutter packages pub get
