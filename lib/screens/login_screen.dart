@@ -35,17 +35,32 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 35,
               ),
-              Hero(
-                tag: 'login',
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Colors.white,
-                      image: DecorationImage(
-                          image: AssetImage('images/main.jpeg'),
-                          fit: BoxFit.cover)),
+              // Hero(
+              //   tag: 'login',
+              //   child: Container(
+              //     width: 200,
+              //     height: 200,
+              //     decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(5),
+              //         color: Colors.white,
+              //         image: DecorationImage(
+              //             image: AssetImage('images/main.jpeg'),
+              //             fit: BoxFit.cover)),
+              //   ),
+              // ),
+              Flexible(
+                child: Hero(
+                  tag: 'login',
+                  child: Container(
+                    width: 200,
+                    height: 200,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.white,
+                        image: DecorationImage(
+                            image: AssetImage('images/main.jpeg'),
+                            fit: BoxFit.cover)),
+                  ),
                 ),
               ),
               SizedBox(
