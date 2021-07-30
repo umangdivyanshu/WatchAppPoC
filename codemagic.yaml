@@ -17,54 +17,11 @@ workflows:
         mkdir -p test-results
         chromedriver --port=4444 &
         flutter config --enable-web
-        flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
-      - |
-        # set up debug keystore
-        rm -f ~/.android/debug.keystore
-        keytool -genkeypair \
-          -alias androiddebugkey \
-          -keypass android \
-          -keystore ~/.android/debug.keystore \
-          -storepass android \
-          -dname 'CN=Android Debug,O=Android,C=US' \
-          -keyalg 'RSA' \
-          -keysize 2048 \
-          -validity 10000
-      - |
-        # set up local properties
-        echo "flutter.sdk=$HOME/programs/flutter" > "$FCI_BUILD_DIR/android/local.properties"
-        - flutter packages pub get
-        - flutter config --enable-web
-        - flutter build apk --release
-        - |
-        # build web
-        flutter build web --release
-        cd build/web
-        7z a -r ../web.zip ./*
-        - |
-        cd $FCI_BUILD_DIR
-
-        pushd android
-        ./gradlew app:assembleAndroidTest
-        ./gradlew app:assembleDebug -Ptarget="$FCI_BUILD_DIR/integration_test/login_test.dart"
-        popd
-
-        echo $GCLOUD_KEY_FILE | base64 --decode > ./gcloud_key_file.json
-
-        gcloud auth activate-service-account --key-file=gcloud_key_file.json
-
-        gcloud --quiet config set project watchapppoc-9e24e
-
-        gcloud firebase test android run \
-          --type instrumentation \
-          --app build/app/outputs/apk/debug/app-debug.apk \
-          --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
-          --timeout 2m
+        ##flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
+        flutter -d web-server chrome test --machine > test-results/flutter.json integration_test --release --browser-name 
+    
     artifacts:
-      - build/**/outputs/apk/**/*.apk
-      - build/**/outputs/bundle/**/*.aab
       - build/**/outputs/**/mapping.txt
-      - build/web.zip
       - flutter_drive.log
     publishing:
       email:
