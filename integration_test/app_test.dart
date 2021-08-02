@@ -5,5 +5,5 @@ import './cart_test.dart' as addToCart;
 void main() {
   loginTest.main();
   addWatches.main();
-  //addToCart.main();
+  addToCart.main();
 }

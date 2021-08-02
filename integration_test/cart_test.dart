@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
@@ -51,9 +53,16 @@ void main() {
     await tester.pumpAndSettle(Duration(seconds: 1));
 
     //tapping on cart icon
-    await tester.scrollUntilVisible(find.byIcon(Icons.shopping_cart), 0.5);
+    //await tester.scrollUntilVisible(find.byIcon(Icons.shopping_cart), 0.5);
 
-    await tester.tap(find.byIcon(Icons.shopping_cart));
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+    addTearDown(gesture.removePointer);
+    await tester.pump();
+    await gesture
+        .moveTo(tester.getCenter(find.byKey(ValueKey('cartIcon'))))
+        .then((value) => tester.tap(find.byKey(ValueKey('cartIcon'))));
+    //await tester.tap(find.byIcon(Icons.shopping_cart));
     await tester.pumpAndSettle(Duration(seconds: 5));
     //await tester.tap(find.byKey(ValueKey('cartIcon')));
     // await tester.pumpAndSettle(Duration(seconds: 5));

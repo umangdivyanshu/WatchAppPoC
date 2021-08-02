@@ -57,13 +57,13 @@ void main() {
 
     //identifying the widget by key-value
     final inputWatchTitle = find.byKey(ValueKey('watchTitle'));
-    await tester.enterText(inputWatchTitle, 'Tag Heur');
+    await tester.enterText(inputWatchTitle, 'Panerai');
 
     final inputWatchDescription = find.byKey(ValueKey('watchDescription'));
-    await tester.enterText(inputWatchDescription, 'Smartwatch');
+    await tester.enterText(inputWatchDescription, 'Hybrid Watch');
 
     final inputWatchPrice = find.byKey(ValueKey('watchPrice'));
-    await tester.enterText(inputWatchPrice, '80000');
+    await tester.enterText(inputWatchPrice, '180000');
 
     final inputImage = find.byKey(ValueKey('watchImage'));
     await tester.enterText(inputImage,

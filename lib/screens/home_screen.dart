@@ -40,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text("Buy Watches!"),
         actions: <Widget>[
           Stack(
+            alignment: Alignment.center,
             children: <Widget>[
               IconButton(
                   icon: Icon(Icons.shopping_cart),
