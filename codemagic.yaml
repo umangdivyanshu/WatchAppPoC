@@ -18,6 +18,7 @@ workflows:
           chromedriver --port=4444 &
           flutter config --enable-web
           flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
+          kill -9 $(lsof -ti tcp:4444)
           
         #test_report: test-results/flutter.json --version
         
@@ -27,6 +28,7 @@ workflows:
           safaridriver --port=4444 &
           flutter config --enable-web
           flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name safaridriver
+          kill -9 $(lsof -ti tcp:4444)
           
         #test_report: test-results/flutter.json --version
       # - |
