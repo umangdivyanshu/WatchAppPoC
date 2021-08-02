@@ -17,7 +17,7 @@ workflows:
           mkdir -p test-results
           chromedriver --port=4444 &
           flutter config --enable-web
-          flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name chrome
+          flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
           kill -9 $(lsof -ti tcp:4444)
           
         #test_report: test-results/flutter.json --version
@@ -27,7 +27,7 @@ workflows:
           mkdir -p test-results
           safaridriver --port=4444 &
           flutter config --enable-web
-          flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/login_test.dart -d web-server --release --browser-name safaridriver
+          flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name safari
           kill -9 $(lsof -ti tcp:4444)
           
         #test_report: test-results/flutter.json --version
