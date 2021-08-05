@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 
 
 // We need satefull widget for our categories

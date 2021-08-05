@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/screens/home_screen.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/screens/home_screen.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

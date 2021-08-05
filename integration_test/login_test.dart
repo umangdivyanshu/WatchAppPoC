@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:integration_test/integration_test.dart';
-import 'package:pocwatchapp/main.dart';
-import 'package:pocwatchapp/screens/home_screen.dart';
-import 'package:pocwatchapp/screens/login_screen.dart';
+import 'package:pocwatchapptest/main.dart';
+import 'package:pocwatchapptest/screens/home_screen.dart';
+import 'package:pocwatchapptest/screens/login_screen.dart';
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();

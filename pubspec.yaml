@@ -1,4 +1,4 @@
-name: pocwatchapp
+name: pocwatchapptest
 description: A new Flutter project.
 
 
@@ -35,7 +35,6 @@ flutter:
    - images/
   #  - icons/
   #  - misc/
-
   fonts:
     - family: Oswald
       fonts:

@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/screens/home_screen.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
-import 'package:pocwatchapp/screens/login_screen.dart';
+import 'package:pocwatchapptest/screens/home_screen.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapptest/screens/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);

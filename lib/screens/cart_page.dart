@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/models/product_model.dart';
-import 'package:pocwatchapp/screens/product_detail.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapptest/screens/product_detail.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ProductCartPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
-import 'package:pocwatchapp/screens/welcome_screen.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/screens/welcome_screen.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 
 void main() {
   runApp(MyApp());

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pocwatchapp/screens/add_product.dart';
+import 'package:pocwatchapptest/screens/add_product.dart';
 
 class AppBarMain extends StatefulWidget {
   const AppBarMain({Key? key}) : super(key: key);
