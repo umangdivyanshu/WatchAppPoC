@@ -124,7 +124,7 @@ packages:
     source: hosted
     version: "0.22.0"
   flutter_test:
-    dependency: "direct dev"
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -160,7 +160,7 @@ packages:
     source: hosted
     version: "4.0.0"
   integration_test:
-    dependency: "direct dev"
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
