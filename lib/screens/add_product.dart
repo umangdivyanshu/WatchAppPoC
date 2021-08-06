@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:pocwatchapptest/models/add_product_model.dart';
+import 'package:pocwatchapp/models/add_product_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:pocwatchapptest/models/product_model.dart';
-import 'package:pocwatchapptest/models/product_networking.dart';
-import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapp/models/product_model.dart';
+import 'package:pocwatchapp/models/product_networking.dart';
+import 'package:pocwatchapp/utilities/constants.dart';
 
 class AddProductPage extends StatelessWidget {
   @override

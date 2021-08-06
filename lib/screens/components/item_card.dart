@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapp/models/product_model.dart';
 
-import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapp/utilities/constants.dart';
 
 class ItemCard extends StatelessWidget {
   final Product? product;

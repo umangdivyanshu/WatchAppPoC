@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
-import 'package:pocwatchapptest/screens/welcome_screen.dart';
-import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapp/screens/welcome_screen.dart';
+import 'package:pocwatchapp/utilities/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,9 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: kPrimaryColor,
-
       ),
-    home: WelcomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

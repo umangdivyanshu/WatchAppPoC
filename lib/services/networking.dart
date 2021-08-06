@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
-import 'package:pocwatchapptest/models/add_product_model.dart';
+import 'package:pocwatchapp/models/add_product_model.dart';
 
 class NetworkHelper {
   NetworkHelper(this.url);
@@ -21,24 +21,22 @@ class NetworkHelper {
     }
   }
 
-  Future<http.Response> postRequest () async {
-   // print(productData);
+  Future<http.Response> postRequest() async {
+    // print(productData);
     Map data = {
-      "description" : "Rolex-New",
-      "imageUrl" : "https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg",
-      "price" : 88171716,
-      "title" : "Rolex12"
+      "description": "Rolex-New",
+      "imageUrl":
+          "https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg",
+      "price": 88171716,
+      "title": "Rolex12"
     };
     //encode Map to JSON
     var body = json.encode(data);
 
     var response = await http.post(Uri.parse(url),
-        headers: {"Content-Type": "application/json"},
-        body: body
-    );
+        headers: {"Content-Type": "application/json"}, body: body);
     print("${response.statusCode}");
     print("${response.body}");
     return response;
   }
-
 }

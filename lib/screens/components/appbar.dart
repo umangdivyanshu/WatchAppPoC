@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:pocwatchapptest/screens/add_product.dart';
+import 'package:pocwatchapp/screens/add_product.dart';
 
 class AppBarMain extends StatefulWidget {
   const AppBarMain({Key? key}) : super(key: key);
@@ -16,7 +15,6 @@ class _AppBarMainState extends State<AppBarMain> {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset(
@@ -33,10 +31,9 @@ class _AppBarMainState extends State<AppBarMain> {
             color: Colors.green,
           ),
           onPressed: () {
-
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) =>AddProductPage()),
+              MaterialPageRoute(builder: (context) => AddProductPage()),
             );
           },
         ),
@@ -45,9 +42,3 @@ class _AppBarMainState extends State<AppBarMain> {
     );
   }
 }
-
-
-
-
-
-
