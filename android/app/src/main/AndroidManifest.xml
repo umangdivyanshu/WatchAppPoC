@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pocwatchapp">
+    package="com.example.pocwatchapptest">
    <application
-        android:label="pocwatchapp"
+        android:label="pocwatchapptest"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
-import 'package:pocwatchapp/models/add_product_model.dart';
+import 'package:pocwatchapptest/models/add_product_model.dart';
 
 class NetworkHelper {
   NetworkHelper(this.url);

@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/models/add_product_model.dart';
+import 'package:pocwatchapptest/models/add_product_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:pocwatchapp/models/product_model.dart';
-import 'package:pocwatchapp/models/product_networking.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapptest/models/product_networking.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 
 class AddProductPage extends StatelessWidget {
   @override
@@ -131,7 +131,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   }
 
   Future<void> submit() async {
-    print('Submit funtion clicked');
+    print('Submit function clicked');
 
     // First validate form.
     //  if (this._formKey.currentState!.validate()) {
@@ -153,7 +153,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       }),
     );
 
-    print("Response - " + response.statusCode.toString());
+    // print("Response - " + response.statusCode.toString());
     if (response.statusCode == 200) {
       //_formKey.currentState!.reset();
       showAlertDialog(context);

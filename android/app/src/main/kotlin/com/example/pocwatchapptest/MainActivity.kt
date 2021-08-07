@@ -1,4 +1,4 @@
-package com.example.pocwatchapp
+package com.example.pocwatchapptest
 
 import io.flutter.embedding.android.FlutterActivity
 

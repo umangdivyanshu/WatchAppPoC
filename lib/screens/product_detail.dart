@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/models/product_model.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
+import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
 
 class ProductDetailPage extends StatelessWidget {
   ProductDetailPage({required this.productDetails});

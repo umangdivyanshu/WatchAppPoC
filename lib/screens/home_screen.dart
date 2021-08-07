@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/services/networking.dart';
-import 'package:pocwatchapp/models/product_networking.dart';
-import 'package:pocwatchapp/screens/components/home_body.dart';
-import 'package:pocwatchapp/screens/components/test.dart';
-import 'package:pocwatchapp/screens/product_detail.dart';
-import 'package:pocwatchapp/models/product_model.dart';
-import 'package:pocwatchapp/screens/add_product.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
-import 'package:pocwatchapp/screens/cart_page.dart';
+import 'package:pocwatchapptest/services/networking.dart';
+import 'package:pocwatchapptest/models/product_networking.dart';
+import 'package:pocwatchapptest/screens/components/home_body.dart';
+import 'package:pocwatchapptest/screens/components/test.dart';
+import 'package:pocwatchapptest/screens/product_detail.dart';
+import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapptest/screens/add_product.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapptest/screens/cart_page.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
 class HomeScreen extends StatefulWidget {
@@ -224,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> getProductData() async {
     List<Product> items = [];
     var productData = await ProductModel().getProducts();
-    print('test:$productData');
+    // print('test:$productData');
 
     var keys = productData.keys;
     print(keys);

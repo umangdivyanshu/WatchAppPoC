@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pocwatchapp/screens/components/appbar.dart';
+import 'package:pocwatchapptest/screens/components/appbar.dart';
 
 void main() {
   runApp(MyApp());

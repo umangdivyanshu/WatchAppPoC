@@ -1,6 +1,6 @@
 {
-    "name": "pocwatchapp",
-    "short_name": "pocwatchapp",
+    "name": "pocwatchapptest",
+    "short_name": "pocwatchapptest",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

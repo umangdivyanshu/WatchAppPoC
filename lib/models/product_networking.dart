@@ -1,7 +1,7 @@
-import 'package:pocwatchapp/models/product_model.dart';
-import 'package:pocwatchapp/services/networking.dart';
-import 'package:pocwatchapp/utilities/constants.dart';
-import 'package:pocwatchapp/models/add_product_model.dart';
+import 'package:pocwatchapptest/models/product_model.dart';
+import 'package:pocwatchapptest/services/networking.dart';
+import 'package:pocwatchapptest/utilities/constants.dart';
+import 'package:pocwatchapptest/models/add_product_model.dart';
 
 class ProductModel {
   Future<dynamic> getProducts() async {
