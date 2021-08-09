@@ -50,7 +50,7 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
-      - name: 'Execute integration test on Chrome browser'
+      - name: 'Execute integration test on Firebase'
         script: |
           output="../build/ios_integ"
           product="build/ios_integ/Build/Products"
