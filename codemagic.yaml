@@ -77,11 +77,11 @@ workflows:
           dev_target="14.5"
           echo "Flutter Build Started For iOS"
           echo `pwd`
-          flutter build ios integration_test/app_test.dart --debug
+          flutter build ios integration_test/app_test.dart --debug --codesign
           echo "Starting xcode Build..."
           pushd ios
           echo `pwd`
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -config Flutter/Debug.xcconfig -derivedDataPath $output -sdk iphoneos build-for-testing
+          xcodebuild -allowProvisioningUpdates -workspace Runner.xcworkspace -scheme Runner -config Flutter/Debug.xcconfig -derivedDataPath $output -sdk iphoneos build-for-testing
           popd
 
           echo "Preparing the zip"
