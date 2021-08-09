@@ -57,11 +57,11 @@ workflows:
           dev_target="14.5"
           echo "Flutter Build Started For iOS"
           echo `pwd`
-          flutter build ios integration_test/app_test.dart --release
+          flutter build ios integration_test/app_test.dart --debug
           echo "Starting xcode Build..."
           pushd ios
           echo `pwd`
-          xcodebuild -workspace Runner.xcworkspace -scheme Runner -config Flutter/Release.xcconfig -derivedDataPath $output -sdk iphoneos build-for-testing
+          xcodebuild -workspace Runner.xcworkspace -scheme Runner -config Flutter/Debug.xcconfig -derivedDataPath $output -sdk iphoneos build-for-testing
           popd
 
           echo "Preparing the zip"
@@ -79,7 +79,7 @@ workflows:
 
           gcloud --quiet config set project watchapppoc-9e24e
 
-          gcloud firebase test ios run --test "build/ios_integ/Build/Products/ios_tests.zip" --device model=iphone11,version=13.6,locale=en_US,orientation=portrait --timeout 5m
+          gcloud firebase test ios run --test "build/ios_integ/Build/Products/ios_tests.zip" --device model=iphone11pro,version=14.7,locale=en_US,orientation=portrait --timeout 5m
 
     artifacts:
       - build/**/outputs/**/mapping.txt
