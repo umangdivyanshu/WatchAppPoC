@@ -69,7 +69,7 @@ workflows:
           keychain add-certificates
       - name: 'Setup code signing settings on xcode project'
         script: |
-          xcode-projects use-profiles
+          xcode-project use-profiles
       - name: 'Execute integration test on Firebase'
         script: |
           output="../build/ios_integ"
