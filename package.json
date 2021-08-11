@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "cucumber-html-reporter": "~5.1.0",
+    "cucumber-junit-formatter": "~0.2.2",
+    "cucumber-pretty": "~6.0.0" 
+  }
+}
