@@ -67,10 +67,12 @@ void main() {
         TestRunSummaryReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        JsonReporter(
-          writeReport: (_, __) => Future<void>.value(),
-        ),
-      ],
+        // JsonReporter(
+        //   writeReport: (_, __) => Future<void>.value(),
+        //),
+        JsonReporter(path: './report/report.json')
+      ]
+      ..hooks = [AttachScreenshotOnFailedStepHook()],
     (World world) => app.main(),
   );
 }
