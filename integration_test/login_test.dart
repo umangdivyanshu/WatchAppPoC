@@ -34,8 +34,8 @@ void main() {
     await tester.pumpAndSettle();
 
     //validating error messages and current state
-    expect(find.text('Email id is required.'), findsOneWidget);
-    expect(find.text('Password is required.'), findsOneWidget);
+    expect(find.text('Email id is required.123'), findsOneWidget);
+    expect(find.text('Password is required.123'), findsOneWidget);
     expect(find.byType(LoginScreen), findsOneWidget);
   });
 
