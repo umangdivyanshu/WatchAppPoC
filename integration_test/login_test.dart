@@ -6,42 +6,54 @@ import 'package:pocwatchapp/screens/home_screen.dart';
 import 'package:pocwatchapp/screens/login_screen.dart';
 
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final IntegrationTestWidgetsFlutterBinding binding =
+      IntegrationTestWidgetsFlutterBinding.ensureInitialized()
+          as IntegrationTestWidgetsFlutterBinding;
 
-  testWidgets("validating login with blank input", (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    await tester.pumpAndSettle(Duration(seconds: 2));
-    print('App launched');
-    expect(
-        find.text(
-            'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-        findsOneWidget);
+  group('login test', () {
+    testWidgets("validating login with blank input",
+        (WidgetTester tester) async {
+      try {
+        await tester.pumpWidget(MyApp());
+        await tester.pumpAndSettle(Duration(seconds: 2));
+        print('App launched');
+        expect(
+            find.text(
+                'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+            findsOneWidget);
 
-    //identifying using widget type
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pumpAndSettle();
+        //identifying using widget type
+        await tester.tap(find.byType(ElevatedButton));
+        await tester.pumpAndSettle();
 
-    //validating user has moved to Login Page
-    expect(
-        find.text(
-            'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-        findsNothing);
-    expect(find.byType(LoginScreen), findsOneWidget);
+        //validating user has moved to Login Page
+        expect(
+            find.text(
+                'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+            findsNothing);
+        expect(find.byType(LoginScreen), findsOneWidget);
 
-    //tapping login button
-    var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
-    await tester.tap(loginBtn);
-    await tester.pumpAndSettle();
+        //tapping login button
+        var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
+        await tester.tap(loginBtn);
+        await tester.pumpAndSettle();
 
-    //validating error messages and current state
-    expect(find.text('Email id is required.'), findsOneWidget);
-    expect(find.text('Password is required.'), findsOneWidget);
-    expect(find.byType(LoginScreen), findsOneWidget);
-  });
+        //validating error messages and current state
+        expect(find.text('Email id is required.11'), findsOneWidget);
+        expect(find.text('Password is required.11'), findsOneWidget);
+        expect(find.byType(LoginScreen), findsOneWidget);
+      } catch (Exception) {
+        //await binding.convertFlutterSurfaceToImage();
+        await binding.takeScreenshot('blankInputLogin');
+        expect(tester.takeException(), Exception);
+      }
+    });
 
   testWidgets("validating login with valid credentials",
       (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
+    
+    try {
+      await tester.pumpWidget(MyApp());
     await tester.pumpAndSettle(Duration(seconds: 2));
     print('App launched');
     expect(
@@ -77,11 +89,17 @@ void main() {
     expect(find.text('Email id is required.'), findsNothing);
     expect(find.text('Password is required.'), findsNothing);
     expect(find.byType(HomeScreen), findsOneWidget);
+    } catch (Exception) {
+        await binding.takeScreenshot('validLogin');
+        expect(tester.takeException(), Exception);
+      }
   });
 
   testWidgets("validating login with invalid credentials",
       (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
+
+    try{
+        await tester.pumpWidget(MyApp());
     await tester.pumpAndSettle(Duration(seconds: 2));
     print('App launched');
     expect(
@@ -117,5 +135,10 @@ void main() {
     expect(find.text('Incorrect Email'), findsOneWidget);
     expect(find.text('Incorrect password'), findsOneWidget);
     expect(find.byType(LoginScreen), findsOneWidget);
+    }catch (Exception) {
+        await binding.takeScreenshot('invalidlCredentialsLogin');
+        expect(tester.takeException(), Exception);
+      }
+  });
   });
 }

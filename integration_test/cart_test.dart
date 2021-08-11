@@ -9,75 +9,85 @@ import 'package:pocwatchapp/screens/home_screen.dart';
 import 'package:pocwatchapp/screens/login_screen.dart';
 
 void main() {
-  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  final IntegrationTestWidgetsFlutterBinding binding =
+      IntegrationTestWidgetsFlutterBinding.ensureInitialized()
+          as IntegrationTestWidgetsFlutterBinding;
 
-  testWidgets("adding and removing items in the cart",
-      (WidgetTester tester) async {
-    await tester.pumpWidget(MyApp());
-    await tester.pumpAndSettle(Duration(seconds: 2));
-    print('App launched');
-    expect(
-        find.text(
-            'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-        findsOneWidget);
+  group('cart test', () {
+    testWidgets("adding and removing items in the cart",
+        (WidgetTester tester) async {
 
-    //identifying using widget type
-    await tester.tap(find.byType(ElevatedButton));
-    await tester.pumpAndSettle();
+      try{
+          await tester.pumpWidget(MyApp());
+          await tester.pumpAndSettle(Duration(seconds: 2));
+          print('App launched');
+          expect(
+              find.text(
+                  'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+              findsOneWidget);
 
-    //validating user has moved to Login Page
-    expect(find.byType(LoginScreen), findsOneWidget);
+          //identifying using widget type
+          await tester.tap(find.byType(ElevatedButton));
+          await tester.pumpAndSettle();
 
-    //entering email
-    var emailInput = find.byKey(ValueKey('loginTxtKey'));
-    await tester.enterText(emailInput, 'user');
+          //validating user has moved to Login Page
+          expect(find.byType(LoginScreen), findsOneWidget);
 
-    //entering password
-    var passwordInput = find.byKey(ValueKey('passwordTxtKey'));
-    await tester.enterText(passwordInput, 'password');
+          //entering email
+          var emailInput = find.byKey(ValueKey('loginTxtKey'));
+          await tester.enterText(emailInput, 'user');
 
-    //tapping login button
-    var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
-    await tester.tap(loginBtn);
-    await tester.pumpAndSettle();
+          //entering password
+          var passwordInput = find.byKey(ValueKey('passwordTxtKey'));
+          await tester.enterText(passwordInput, 'password');
 
-    //validating error message and current state
-    expect(find.text('Email id is required.'), findsNothing);
-    expect(find.text('Password is required.'), findsNothing);
-    expect(find.byType(HomeScreen), findsOneWidget);
+          //tapping login button
+          var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
+          await tester.tap(loginBtn);
+          await tester.pumpAndSettle();
 
-    //adding products to the cart
-    //await tester.tap(find.byType(ElevatedButton).first);
-    // await tester.tap(find.byKey(ValueKey('Armani button')));
-    await tester.tap(find.byType(ElevatedButton).at(2));
-    await tester.pumpAndSettle(Duration(seconds: 1));
+          //validating error message and current state
+          expect(find.text('Email id is required.'), findsNothing);
+          expect(find.text('Password is required.'), findsNothing);
+          expect(find.byType(HomeScreen), findsOneWidget);
 
-    //tapping on cart icon
-    //await tester.scrollUntilVisible(find.byIcon(Icons.shopping_cart), 0.5);
+          //adding products to the cart
+          //await tester.tap(find.byType(ElevatedButton).first);
+          // await tester.tap(find.byKey(ValueKey('Armani button')));
+          await tester.tap(find.byType(ElevatedButton).at(2));
+          await tester.pumpAndSettle(Duration(seconds: 1));
 
-    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
-    await gesture.addPointer(location: Offset.zero);
-    addTearDown(gesture.removePointer);
-    await tester.pump();
-    await gesture
-        .moveTo(tester.getCenter(find.byKey(ValueKey('cartIcon'))))
-        .then((value) => tester.tap(find.byKey(ValueKey('cartIcon'))));
-    //await tester.tap(find.byIcon(Icons.shopping_cart));
-    await tester.pumpAndSettle(Duration(seconds: 5));
-    //await tester.tap(find.byKey(ValueKey('cartIcon')));
-    // await tester.pumpAndSettle(Duration(seconds: 5));
-    //await tester.tapAt(Offset(11, 11));
-    //await tester.pumpAndSettle(Duration(seconds: 5));
+          //tapping on cart icon
+          //await tester.scrollUntilVisible(find.byIcon(Icons.shopping_cart), 0.5);
 
-    //validating user has moved to Cart Page
-    expect(find.byType(ProductCartPage), findsOneWidget);
-    expect(find.text('Remove from Cart'), findsOneWidget);
+          final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+          await gesture.addPointer(location: Offset.zero);
+          addTearDown(gesture.removePointer);
+          await tester.pump();
+          await gesture
+              .moveTo(tester.getCenter(find.byKey(ValueKey('cartIcon'))))
+              .then((value) => tester.tap(find.byKey(ValueKey('cartIcon'))));
+          //await tester.tap(find.byIcon(Icons.shopping_cart));
+          await tester.pumpAndSettle(Duration(seconds: 5));
+          //await tester.tap(find.byKey(ValueKey('cartIcon')));
+          // await tester.pumpAndSettle(Duration(seconds: 5));
+          //await tester.tapAt(Offset(11, 11));
+          //await tester.pumpAndSettle(Duration(seconds: 5));
 
-    //removing the product from the cart
-    await tester.tap(find.byType(ElevatedButton).first);
-    await tester.pumpAndSettle(Duration(seconds: 1));
+          //validating user has moved to Cart Page
+          expect(find.byType(ProductCartPage), findsOneWidget);
+          expect(find.text('Remove from Cart'), findsOneWidget);
 
-    //validating item has been removed from the cart
-    expect(find.text('Cart is Empty'), findsOneWidget);
+          //removing the product from the cart
+          await tester.tap(find.byType(ElevatedButton).first);
+          await tester.pumpAndSettle(Duration(seconds: 1));
+
+          //validating item has been removed from the cart
+          expect(find.text('Cart is Empty'), findsOneWidget);
+      }catch (Exception) {
+        await binding.takeScreenshot('cartTest');
+        expect(tester.takeException(), Exception);
+      }
+    });
   });
 }
