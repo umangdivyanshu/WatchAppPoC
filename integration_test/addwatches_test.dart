@@ -86,7 +86,8 @@ void main() {
                 //await tester.pumpFrames(alertbox, Duration(seconds: 30));
 
       }catch (Exception) {
-        await binding.takeScreenshot('addWatchesTest');
+        DateTime currentDate = DateTime.now();
+        await binding.takeScreenshot('addWatchesTest$currentDate');
         expect(tester.takeException(), Exception);
       }
     });

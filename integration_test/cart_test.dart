@@ -85,7 +85,8 @@ void main() {
           //validating item has been removed from the cart
           expect(find.text('Cart is Empty'), findsOneWidget);
       }catch (Exception) {
-        await binding.takeScreenshot('cartTest');
+        DateTime currentDate = DateTime.now();
+        await binding.takeScreenshot('cartTest$currentDate');
         expect(tester.takeException(), Exception);
       }
     });

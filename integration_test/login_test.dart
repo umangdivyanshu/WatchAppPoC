@@ -44,7 +44,8 @@ void main() {
         expect(find.byType(LoginScreen), findsOneWidget);
       } catch (Exception) {
         //await binding.convertFlutterSurfaceToImage();
-        await binding.takeScreenshot('blankInputLogin');
+        DateTime currentDate = DateTime.now();
+        await binding.takeScreenshot('blankInputLogin$currentDate');
         expect(tester.takeException(), Exception);
       }
     });
@@ -90,7 +91,8 @@ void main() {
     expect(find.text('Password is required.'), findsNothing);
     expect(find.byType(HomeScreen), findsOneWidget);
     } catch (Exception) {
-        await binding.takeScreenshot('validLogin');
+      DateTime currentDate = DateTime.now();
+        await binding.takeScreenshot('validLogin$currentDate');
         expect(tester.takeException(), Exception);
       }
   });
@@ -136,7 +138,8 @@ void main() {
     expect(find.text('Incorrect password'), findsOneWidget);
     expect(find.byType(LoginScreen), findsOneWidget);
     }catch (Exception) {
-        await binding.takeScreenshot('invalidlCredentialsLogin');
+      DateTime currentDate = DateTime.now();
+        await binding.takeScreenshot('invalidlCredentialsLogin$currentDate');
         expect(tester.takeException(), Exception);
       }
   });

@@ -14,7 +14,7 @@ workflows:
     scripts:
       - name: 'Execute integration test on Chrome browser'
         script: |
-          mkdir -p test-results
+          mkdir -p screenshots
           chromedriver --port=4444 &
           flutter config --enable-web
           flutter drive --driver=test_driver/integration_driver.dart --target=integration_test/app_test.dart -d web-server --release --browser-name chrome
@@ -24,7 +24,7 @@ workflows:
         
       - name: 'Execute integration test on Safari browser'
         script: |
-          mkdir -p test-results
+          mkdir -p screenshots
           echo ` which safaridriver`
           sudo safaridriver --enable
           safaridriver --port=4444 &
