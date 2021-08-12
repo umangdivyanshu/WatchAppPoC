@@ -44,6 +44,7 @@ workflows:
     
     artifacts:
       - build/**/outputs/**/mapping.txt
+      - screenshots/*.png
       - flutter_drive.log
     publishing:
       email:
