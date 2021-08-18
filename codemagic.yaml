@@ -48,11 +48,18 @@ workflows:
           --app build/app/outputs/apk/debug/app-debug.apk \
           --test build/app/outputs/apk/androidTest/debug/app-debug-androidTest.apk \
           --timeout 2m
+        
+        node jsonparser.js
+        $? 0
+        node index.js
+        $? 0
     artifacts:
       - build/**/outputs/apk/**/*.apk
       - build/**/outputs/bundle/**/*.aab
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
+      - integration_test/gherkin/reports/*.json
+      - report/*.html
     publishing:
       email:
         recipients:
