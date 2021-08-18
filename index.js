@@ -1,8 +1,12 @@
+//import {parseJson} from './jsonparser';
+
 var reporter = require('cucumber-html-reporter');
+//var parser = require('./jsonparser.js');
+
 
 var options = {
         theme: 'bootstrap',
-        jsonFile: 'report/integrationresponsedata.json',
+        jsonFile: 'integration_test/gherkin/reports/parsed_json_report.json',
         output: 'report/cucumberreport.html',
         reportSuiteAsScenarios: true,
         scenarioTimestamp: true,
@@ -17,4 +21,7 @@ var options = {
         }
     };
 
+    //parseJson();
+    //parser.parseJson();
     reporter.generate(options);
+

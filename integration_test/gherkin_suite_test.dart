@@ -1,10 +1,10 @@
 import 'package:flutter_gherkin/flutter_gherkin.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:gherkin/gherkin.dart';
 
 // The application under test.
 import 'package:pocwatchapp/main.dart' as app;
 
+import 'gherkin/hooks/hooks.dart';
 import 'gherkin/steps/add_product_to_cart.dart';
 import 'gherkin/steps/app_running_fine.dart';
 import 'gherkin/steps/enter_password.dart';
@@ -67,12 +67,14 @@ void main() {
         TestRunSummaryReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
-        // JsonReporter(
-        //   writeReport: (_, __) => Future<void>.value(),
-        //),
-        JsonReporter(path: './report/report.json')
+        JsonReporter(
+          writeReport: (_, __) => Future<void>.value(),
+        ),
+
+        //JsonReporter(path: './report/jsonreport.json')
       ]
       ..hooks = [AttachScreenshotOnFailedStepHook()],
+    //..hooks = [ParseResponseJson()],
     (World world) => app.main(),
   );
 }

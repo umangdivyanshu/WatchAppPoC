@@ -224,10 +224,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> getProductData() async {
     List<Product> items = [];
     var productData = await ProductModel().getProducts();
-    print('test:$productData');
+    //print('test:$productData');
 
     var keys = productData.keys;
-    print(keys);
+    //print(keys);
     for (String item in keys) {
       var value = productData[item];
       if (value is Map<String, dynamic>) {
