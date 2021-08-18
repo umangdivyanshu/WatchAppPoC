@@ -17,7 +17,7 @@ workflows:
           mkdir -p test-results
           chromedriver --port=4444 &
           flutter config --enable-web
-          flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/gherkin_suite_test_test.dart -d web-server --release --browser-name chrome
+          flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/gherkin_suite_test.dart -d web-server --release --browser-name chrome
           kill -9 $(lsof -ti tcp:4444)
           
         #test_report: test-results/flutter.json --version
