@@ -12,6 +12,9 @@ workflows:
       xcode: latest
       cocoapods: default
     scripts:
+      - name: 'Cleaning Old Reports'
+        script: |
+          npm run report-cleaning
       - name: 'Execute integration test on Chrome browser'
         script: |
           mkdir -p test-results
@@ -19,18 +22,20 @@ workflows:
           flutter config --enable-web
           flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/gherkin_suite_test.dart -d web-server --release --browser-name chrome
           kill -9 $(lsof -ti tcp:4444)
+          npm run chrome-report-generator
           
         #test_report: test-results/flutter.json --version
         
       - name: 'Execute integration test on Safari browser'
         script: |
-          mkdir -p test-results
+          npm run clean-integration-response-data
           echo ` which safaridriver`
           sudo safaridriver --enable
           safaridriver --port=4444 &
           flutter config --enable-web
           flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/gherkin_suite_test.dart -d web-server --release --browser-name safari
           kill -9 $(lsof -ti tcp:4444)
+          npm run safari-report-generator
           
         #test_report: test-results/flutter.json --version
       # - |
@@ -45,7 +50,10 @@ workflows:
     artifacts:
       - build/**/outputs/**/mapping.txt
       - flutter_drive.log
+      - integration_test/gherkin/reports/*.html
+      - integration_test/gherkin/reports/*.json
     publishing:
       email:
         recipients:
           - umang.divyanshu@aricent.com
+          - siddharth.rath@aricent.com

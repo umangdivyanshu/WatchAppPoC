@@ -7,6 +7,8 @@
 
   "scripts": {
     "report-cleaning": "rm -rf integration_test/gherkin/reports/*",
-    "report-generator": "node jsonparser.js & node index.js"
+    "clean-integration-response-data": "rm -rf integration_test/gherkin/reports/integration_response_data.json",
+    "chrome-report-generator": "node jsonGeneratorChrome.js & node index.js",
+    "safari-report-generator": "node jsonGeneratorSafari.js & node indexSafari.js"
   }
 }
