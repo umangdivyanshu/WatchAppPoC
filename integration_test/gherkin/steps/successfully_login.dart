@@ -12,15 +12,15 @@ final thenISuccessfullyLoginToHomescreen = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating succesful login and current state
-      expect(find.text('Email id is required.'), findsNothing);
-      expect(find.text('Password is required.'), findsNothing);
-      expect(find.byType(HomeScreen), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    // try {
+    //validating succesful login and current state
+    expect(find.text('Email id is required.'), findsNothing);
+    expect(find.text('Password is required.'), findsNothing);
+    expect(find.byType(HomeScreen), findsOneWidget);
+    // } on FlutterError {
+    //   // pump for 2 seconds and stop
+    //   await tester.pump(const Duration(seconds: 2));
+    // }
   },
   configuration: StepDefinitionConfiguration()
     ..timeout = const Duration(minutes: 5),

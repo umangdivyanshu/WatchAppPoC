@@ -58,9 +58,9 @@ void main() {
       theISeeAlertPopupWithMessage,
     ])
       ..reporters = [
-        StdoutReporter(MessageLevel.error)
-          ..setWriteLineFn(print)
-          ..setWriteFn(print),
+        // StdoutReporter(MessageLevel.error)
+        //   ..setWriteLineFn(print)
+        //   ..setWriteFn(print),
         ProgressReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
@@ -70,11 +70,9 @@ void main() {
         JsonReporter(
           writeReport: (_, __) => Future<void>.value(),
         ),
-
         //JsonReporter(path: './report/jsonreport.json')
       ]
       ..hooks = [AttachScreenshotOnFailedStepHook()],
-    //..hooks = [ParseResponseJson()],
     (World world) => app.main(),
   );
 }

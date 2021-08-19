@@ -1,3 +1,4 @@
+@addProduct
 Feature: Adding New Products Test
 
 

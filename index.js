@@ -7,7 +7,7 @@ var reporter = require('cucumber-html-reporter');
 var options = {
         theme: 'bootstrap',
         jsonFile: 'integration_test/gherkin/reports/parsed_json_report.json',
-        output: 'report/cucumberreport.html',
+        output: 'integration_test/gherkin/reports/cucumberreport.html',
         reportSuiteAsScenarios: true,
         scenarioTimestamp: true,
         launchReport: true,

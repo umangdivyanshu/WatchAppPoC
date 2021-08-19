@@ -21,171 +21,12 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
   void testFeature0() {
     runFeature(
-      'Login Test:',
-      <String>[],
-      () async {
-        runScenario(
-          'Validate login with blank input',
-          <String>[],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see error messages for blank input',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-
-        runScenario(
-          'Validate login with invalid credentials',
-          <String>[],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the username \'user123\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the password \'password123\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see error messages for invalid input',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-
-        runScenario(
-          'Validate login with valid credentials',
-          <String>[],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the username \'user\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the password \'password\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I successfully login to see homescreen',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-      },
-    );
-  }
-
-  void testFeature1() {
-    runFeature(
       'Adding New Products Test:',
-      <String>[],
+      <String>['@addProduct'],
       () async {
         runScenario(
           'Adding new watches to the product list',
-          <String>[],
+          <String>['@addProduct'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -297,14 +138,110 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     );
   }
 
-  void testFeature2() {
+  void testFeature1() {
     runFeature(
-      'Add/Remove From Cart Test:',
-      <String>[],
+      'Login Test:',
+      <String>['@loginTest'],
       () async {
         runScenario(
-          'Adding and removing products from the cart',
-          <String>[],
+          'Validate login with blank input',
+          <String>['@loginTest'],
+          (TestDependencies dependencies) async {
+            await runStep(
+              'Given the app is running fine',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap the Next button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see the login screen',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on login button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see error messages for blank input',
+              <String>[],
+              null,
+              dependencies,
+            );
+          },
+        );
+
+        runScenario(
+          'Validate login with invalid credentials',
+          <String>['@loginTest'],
+          (TestDependencies dependencies) async {
+            await runStep(
+              'Given the app is running fine',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap the Next button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see the login screen',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the username \'user123\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the password \'password123\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on login button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see error messages for invalid input',
+              <String>[],
+              null,
+              dependencies,
+            );
+          },
+        );
+
+        runScenario(
+          'Validate login with valid credentials',
+          <String>['@loginTest'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -336,6 +273,69 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
             await runStep(
               'And I enter the password \'password\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on login button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I successfully login to see homescreen',
+              <String>[],
+              null,
+              dependencies,
+            );
+          },
+        );
+      },
+    );
+  }
+
+  void testFeature2() {
+    runFeature(
+      'Add/Remove From Cart Test:',
+      <String>['@cartTest'],
+      () async {
+        runScenario(
+          'Adding and removing products from the cart',
+          <String>['@cartTest'],
+          (TestDependencies dependencies) async {
+            await runStep(
+              'Given the app is running fine',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap the Next button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see the login screen',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the username \'user123\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the password \'password123\'',
               <String>[],
               null,
               dependencies,

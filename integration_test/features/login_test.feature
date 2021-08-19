@@ -1,4 +1,6 @@
+@loginTest
 Feature: Login Test
+
 
 Scenario: Validate login with blank input
   Given the app is running fine
