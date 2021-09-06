@@ -14,128 +14,9 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
   @override
   void onRun() {
-    testFeature0();
+    //testFeature0();
     testFeature1();
-    testFeature2();
-  }
-
-  void testFeature0() {
-    runFeature(
-      'Adding New Products Test:',
-      <String>['@addProduct'],
-      () async {
-        runScenario(
-          'Adding new watches to the product list',
-          <String>['@addProduct'],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the username \'user\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the password \'password\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I successfully login to see homescreen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on Add icon',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the form to add watches',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter watch title \'Tissot\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter watch description \'Sleek Watch\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter watch price \'35000\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter watch image path \'https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on Save button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see alert popup with message \'Product Added Successfully\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-      },
-    );
+    //testFeature2();
   }
 
   void testFeature1() {
@@ -210,14 +91,14 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             );
 
             await runStep(
-              'And I enter the username \'user123\'',
+              'And I enter the username \'user\'',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter the password \'password123\'',
+              'And I enter the password \'password\'',
               <String>[],
               null,
               dependencies,
@@ -287,104 +168,6 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
             await runStep(
               'Then I successfully login to see homescreen',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-      },
-    );
-  }
-
-  void testFeature2() {
-    runFeature(
-      'Add/Remove From Cart Test:',
-      <String>['@cartTest'],
-      () async {
-        runScenario(
-          'Adding and removing products from the cart',
-          <String>['@cartTest'],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the username \'user123\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the password \'password123\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I successfully login to see homescreen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I add product at index 3 to the cart',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on cart icon',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see cart page',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on Remove from Cart button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I validate cart is empty',
               <String>[],
               null,
               dependencies,

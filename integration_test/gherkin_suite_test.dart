@@ -15,6 +15,7 @@ import 'gherkin/steps/enter_watch_price.dart';
 import 'gherkin/steps/enter_watch_title.dart';
 import 'gherkin/steps/error_messages_for_blank_input.dart';
 import 'gherkin/steps/error_messages_for_invalid_input.dart';
+import 'gherkin/steps/login_page.dart';
 import 'gherkin/steps/see_alert_popup.dart';
 import 'gherkin/steps/see_cart_page.dart';
 import 'gherkin/steps/see_form_to_add_watches.dart';
@@ -34,15 +35,15 @@ part 'gherkin_suite_test.g.dart';
 void main() {
   executeTestSuite(
     FlutterTestConfiguration.DEFAULT([
-      givenAppIsRunningFine,
-      whenITapNextButton,
-      thenISeeLoginScreen,
-      whenITapLoginButton,
-      thenISeeErrorMessageForBlankInput,
-      andIEnterUsername,
-      andIEnterPassword,
-      thenISeeErrorMessageForInvalidInput,
-      thenISuccessfullyLoginToHomescreen,
+      givenAppIsRunningFinea,
+      whenITapNextButtona,
+      thenISeeLoginScreena,
+      whenITapLoginButtona,
+      thenISeeErrorMessageForBlankInputa,
+      andIEnterUsernamea,
+      andIEnterPassworda,
+      thenISeeErrorMessageForInvalidInputa,
+      thenISuccessfullyLoginToHomescreena,
       thenIAddProductToCart,
       whenITapCartIcon,
       thenISeeCartPage,
