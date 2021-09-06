@@ -6,7 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pocwatchapp/screens/home_screen.dart';
 import 'package:pocwatchapp/screens/login_screen.dart';
 
-final givenAppIsRunningFinea = given<FlutterWidgetTesterWorld>(
+final givenAppIsRunningFine = given<FlutterWidgetTesterWorld>(
   'the app is running fine',
   (context) async {
     final tester = context.world.rawAppDriver;
@@ -26,13 +26,14 @@ final givenAppIsRunningFinea = given<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final whenITapNextButtona = when<FlutterWidgetTesterWorld>(
+final whenITapNextButton = when<FlutterWidgetTesterWorld>(
   'I tap the Next button',
   (context) async {
     final tester = context.world.rawAppDriver;
 
     try {
       //identifying using widget type
+
       await tester.tap(find.byType(ElevatedButton));
       await tester.pumpAndSettle();
     } on FlutterError {
@@ -44,7 +45,7 @@ final whenITapNextButtona = when<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final thenISeeLoginScreena = then<FlutterWidgetTesterWorld>(
+final thenISeeLoginScreen = then<FlutterWidgetTesterWorld>(
   'I see the login screen',
   (context) async {
     final tester = context.world.rawAppDriver;
@@ -65,7 +66,7 @@ final thenISeeLoginScreena = then<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final whenITapLoginButtona = when<FlutterWidgetTesterWorld>(
+final whenITapLoginButton = when<FlutterWidgetTesterWorld>(
   'I tap on login button',
   (context) async {
     final tester = context.world.rawAppDriver;
@@ -84,7 +85,7 @@ final whenITapLoginButtona = when<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final thenISeeErrorMessageForBlankInputa = then<FlutterWidgetTesterWorld>(
+final thenISeeErrorMessageForBlankInput = then<FlutterWidgetTesterWorld>(
   'I see error messages for blank input',
   (context) async {
     final tester = context.world.rawAppDriver;
@@ -104,7 +105,7 @@ final thenISeeErrorMessageForBlankInputa = then<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final andIEnterUsernamea = and1<String, FlutterWidgetTesterWorld>(
+final andIEnterUsername = and1<String, FlutterWidgetTesterWorld>(
   'I enter the username {String}',
   (uname, context) async {
     final tester = context.world.rawAppDriver;
@@ -121,7 +122,7 @@ final andIEnterUsernamea = and1<String, FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final andIEnterPassworda = and1<String, FlutterWidgetTesterWorld>(
+final andIEnterPassword = and1<String, FlutterWidgetTesterWorld>(
   'I enter the password {String}',
   (passwd, context) async {
     final tester = context.world.rawAppDriver;
@@ -139,7 +140,7 @@ final andIEnterPassworda = and1<String, FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final thenISeeErrorMessageForInvalidInputa = then<FlutterWidgetTesterWorld>(
+final thenISeeErrorMessageForInvalidInput = then<FlutterWidgetTesterWorld>(
   'I see error messages for invalid input',
   (context) async {
     final tester = context.world.rawAppDriver;
@@ -159,7 +160,7 @@ final thenISeeErrorMessageForInvalidInputa = then<FlutterWidgetTesterWorld>(
     ..timeout = const Duration(minutes: 5),
 );
 
-final thenISuccessfullyLoginToHomescreena = then<FlutterWidgetTesterWorld>(
+final thenISuccessfullyLoginToHomescreen = then<FlutterWidgetTesterWorld>(
   'I successfully login to see homescreen',
   (context) async {
     final tester = context.world.rawAppDriver;
