@@ -1,10 +1,13 @@
 pipeline {
     agent any
-
     stages {
         stage ('Flutter Doctor') {
             steps {
-                sh 'flutter doctor -v'
+                sh '''
+                   #!/bin/bash
+                   flutter doctor -v
+                   '''
+                
             }
         }
     }
