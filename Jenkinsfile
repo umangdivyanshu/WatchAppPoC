@@ -41,13 +41,20 @@ pipeline {
                 
             }
         }
+        stage ('Traversing To ChromeDriver Location') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   cd /Users/umangdivyanshu
+                   '''
+                
+            }
+        }
         stage ('Launching ChromeDriver') {
             steps {
                 sh '''
                    #!/bin/bash
-                   cd /Users/umangdivyanshu &
-                   ./chromedriver --port=4444 &
-                   flutter config --enable-web
+                   chromedriver --port=4444
                    '''
                 
             }
