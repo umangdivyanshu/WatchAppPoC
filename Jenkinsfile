@@ -31,11 +31,38 @@ pipeline {
                 
             }
         }
-        stage ('Run Flutter Tests') {
+        stage ('Cleaning Old Reports') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   npm run report-cleaning
+                   '''
+                
+            }
+        }
+        stage ('Launching ChromeDriver') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   chromedriver --port=4444 & flutter config --enable-web
+                   '''
+                
+            }
+        }
+        stage ('Running Flutter Integration Tests') {
             steps {
                 sh '''
                    #!/bin/bash
                    flutter drive --driver=test_driver/integration_test_driver.dart --target=integration_test/gherkin_suite_test.dart -d web-server --no-headless --browser-name=chrome --browser-dimension 1435,1000
+                   '''
+                
+            }
+        }
+        stage ('Generating Reports') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   npm run chrome-report-generator
                    '''
                 
             }
