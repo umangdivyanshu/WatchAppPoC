@@ -45,7 +45,9 @@ pipeline {
             steps {
                 sh '''
                    #!/bin/bash
-                   ./chromedriver --port=4444 & flutter config --enable-web
+                   cd /Users/umangdivyanshu &
+                   ./chromedriver --port=4444 &
+                   flutter config --enable-web
                    '''
                 
             }
