@@ -41,24 +41,15 @@ pipeline {
                 
             }
         }
-        // stage ('Traversing To ChromeDriver Location') {
-        //     steps {
-        //         sh '''
-        //            #!/bin/bash
-        //            cd /Users/umangdivyanshu
-        //            '''
+        stage ('Launching ChromeDriver') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   /Users/umangdivyanshu/chromedriver --port=4444 &
+                   '''
                 
-        //     }
-        // }
-        // stage ('Launching ChromeDriver') {
-        //     steps {
-        //         sh '''
-        //            #!/bin/bash
-        //            chromedriver --port=4444
-        //            '''
-                
-        //     }
-        // }
+            }
+        }
         stage ('Running Flutter Integration Tests') {
             steps {
                 sh '''
