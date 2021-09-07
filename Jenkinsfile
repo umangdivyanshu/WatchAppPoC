@@ -1,6 +1,27 @@
 pipeline {
-    agent { label 'Flutter_v2020_05' }
+    agent any
     stages {
+        stage ('Flutter Clean') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   flutter clean
+                   '''
+            }
+        }
+        stage ('Flutter Upgrade') {
+            steps {
+                sh '''
+                   #!/bin/bash
+                   flutter upgrade
+                   '''
+            }
+        }
+        stage ('Flutter Pub Get') {
+            steps {
+                sh "flutter pub get"
+            }
+        }
         stage ('Flutter Doctor') {
             steps {
                 sh '''
@@ -8,11 +29,6 @@ pipeline {
                    flutter doctor -v
                    '''
                 
-            }
-        }
-        stage ('Run Flutter Tests') {
-            steps {
-                sh "flutter pub get"
             }
         }
     }
