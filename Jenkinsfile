@@ -59,14 +59,15 @@ pipeline {
                 
             }
         }
-        stage ('Generating Reports') {
-            steps {
-                sh '''
-                   #!/bin/bash
-                   npm run chrome-report-generator
-                   '''
-                
-            }
+    }
+    post ('Generating Reports') {
+        always {
+            sh '''
+                #!/bin/bash
+                npm run chrome-report-generator
+                '''
+            
         }
     }
+    
 }
