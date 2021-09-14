@@ -68,9 +68,6 @@ pipeline {
                 '''
             
         }
-    }
-
-    post ('Archiving Reports') {
         cleanup {
             archiveArtifacts artifacts: 'integration_test/gherkin/reports/*', caseSensitive: false, onlyIfSuccessful: true
         }
