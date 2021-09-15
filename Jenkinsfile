@@ -69,6 +69,7 @@ pipeline {
             
         }
         cleanup {
+            cucumber failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileExcludePattern: '**/integration_response_data.json', fileIncludePattern: '**/*.json', jsonReportDirectory: 'integration_test/gherkin/reports/', pendingStepsNumber: -1, reportTitle: 'Flutter Integration Test Report', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
             archiveArtifacts artifacts: 'integration_test/gherkin/reports/*', caseSensitive: false, onlyIfSuccessful: true
         }
     }
