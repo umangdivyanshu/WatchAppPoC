@@ -64,7 +64,7 @@ pipeline {
         always {
             sh '''
                 #!/bin/bash
-                npm run chrome-report-generator
+                node generate-cucumber-html-report.js
                 '''
             
         }
