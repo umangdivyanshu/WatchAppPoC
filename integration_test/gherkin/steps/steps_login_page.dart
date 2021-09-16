@@ -6,45 +6,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pocwatchapp/screens/home_screen.dart';
 import 'package:pocwatchapp/screens/login_screen.dart';
 
-final givenAppIsRunningFine = given<FlutterWidgetTesterWorld>(
-  'the app is running fine',
-  (context) async {
-    final tester = context.world.rawAppDriver;
-
-    try {
-      print('App launched');
-      expect(
-          find.text(
-              'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-          findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
-  },
-  configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
-);
-
-final whenITapNextButton = when<FlutterWidgetTesterWorld>(
-  'I tap the Next button',
-  (context) async {
-    final tester = context.world.rawAppDriver;
-
-    try {
-      //identifying using widget type
-
-      await tester.tap(find.byType(ElevatedButton));
-      await tester.pumpAndSettle();
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
-  },
-  configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
-);
-
 final thenISeeLoginScreen = then<FlutterWidgetTesterWorld>(
   'I see the login screen',
   (context) async {

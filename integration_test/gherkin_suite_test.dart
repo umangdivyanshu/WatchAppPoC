@@ -5,20 +5,11 @@ import 'package:gherkin/gherkin.dart';
 import 'package:pocwatchapp/main.dart' as app;
 
 import 'gherkin/hooks/hooks.dart';
-import 'gherkin/steps/add_product_to_cart.dart';
-import 'gherkin/steps/enter_watch_description.dart';
-import 'gherkin/steps/enter_watch_image_path.dart';
-import 'gherkin/steps/enter_watch_price.dart';
-import 'gherkin/steps/enter_watch_title.dart';
-import 'gherkin/steps/login_steps.dart';
-import 'gherkin/steps/see_alert_popup.dart';
-import 'gherkin/steps/see_cart_page.dart';
-import 'gherkin/steps/see_form_to_add_watches.dart';
-import 'gherkin/steps/tap_add_icon.dart';
-import 'gherkin/steps/tap_cart_icon.dart';
-import 'gherkin/steps/tap_remove_from_cart_button.dart';
-import 'gherkin/steps/tap_save_button.dart';
-import 'gherkin/steps/validate_cart_is_empty.dart';
+import 'gherkin/steps/steps_add_watch_page.dart';
+import 'gherkin/steps/steps_cart_page.dart';
+import 'gherkin/steps/steps_login_page.dart';
+import 'gherkin/steps/steps_product_listing_page.dart';
+import 'gherkin/steps/steps_welcome_page.dart';
 
 part 'gherkin_suite_test.g.dart';
 
@@ -62,7 +53,7 @@ void main() {
         JsonReporter(
           writeReport: (_, __) => Future<void>.value(),
         ),
-        //JsonReporter(path: './report/jsonreport.json')
+        JsonReporter(path: './report/jsonreport.json')
       ]
       ..hooks = [AttachScreenshotOnFailedStepHook()],
     (World world) => app.main(),

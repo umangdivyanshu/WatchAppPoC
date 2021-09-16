@@ -14,8 +14,8 @@ Scenario: Validate login with invalid credentials
   Given the app is running fine
   When I tap the Next button
   Then I see the login screen
-  And I enter the username 'user'
-  And I enter the password 'password'
+  And I enter the username 'user123'
+  And I enter the password 'password123'
   When I tap on login button
   Then I see error messages for invalid input
 
