@@ -23,7 +23,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     runFeature(
       'Login Test:',
       <String>['@loginTest'],
-      () async {
+      () {
         runScenario(
           'Validate login with blank input',
           <String>['@loginTest'],
@@ -63,6 +63,11 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: () async => onBeforeRunFeature(
+            'Validate login with blank input',
+            <String>['@loginTest'],
+          ),
+          onAfter: null,
         );
 
         runScenario(
@@ -118,6 +123,8 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: null,
+          onAfter: null,
         );
 
         runScenario(
@@ -173,6 +180,10 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: null,
+          onAfter: () async => onAfterRunFeature(
+            'Validate login with valid credentials',
+          ),
         );
       },
     );
@@ -182,7 +193,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     runFeature(
       'Add/Remove From Cart Test:',
       <String>['@cartTest'],
-      () async {
+      () {
         runScenario(
           'Adding and removing products from the cart',
           <String>['@cartTest'],
@@ -271,6 +282,13 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: () async => onBeforeRunFeature(
+            'Adding and removing products from the cart',
+            <String>['@cartTest'],
+          ),
+          onAfter: () async => onAfterRunFeature(
+            'Adding and removing products from the cart',
+          ),
         );
       },
     );
@@ -280,7 +298,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     runFeature(
       'Adding New Products Test:',
       <String>['@addProduct'],
-      () async {
+      () {
         runScenario(
           'Adding new watches to the product list',
           <String>['@addProduct'],
@@ -390,6 +408,13 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: () async => onBeforeRunFeature(
+            'Adding new watches to the product list',
+            <String>['@addProduct'],
+          ),
+          onAfter: () async => onAfterRunFeature(
+            'Adding new watches to the product list',
+          ),
         );
       },
     );

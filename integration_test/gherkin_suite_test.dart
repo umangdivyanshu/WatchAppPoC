@@ -70,7 +70,7 @@ void main() {
         JsonReporter(
           writeReport: (_, __) => Future<void>.value(),
         ),
-        //JsonReporter(path: './report/jsonreport.json')
+        JsonReporter(path: './report/jsonreport.json')
       ]
       ..hooks = [AttachScreenshotOnFailedStepHook()],
     (World world) => app.main(),
