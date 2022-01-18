@@ -25,8 +25,8 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
       <String>['@addProduct'],
       () {
         runScenario(
-          'Adding new watches to the product list',
-          <String>['@addProduct'],
+          'Adding and removing products from the cart',
+          <String>['@cartTest'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -78,56 +78,35 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             );
 
             await runStep(
-              'When I tap on Add icon',
+              'Then I add product at index 3 to the cart',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'Then I see the form to add watches',
+              'When I tap on cart icon',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter watch title \'Hublot\'',
+              'Then I see cart page',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter watch description \'Performance Watch\'',
+              'When I tap on Remove from Cart button',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter watch price \'115000\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter watch image path \'https://images-na.ssl-images-amazon.com/images/I/81wGRwNp2VL._UL1500_.jpg\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on Save button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see alert popup with message \'Product Added Successfully\'',
+              'Then I validate cart is empty',
               <String>[],
               null,
               dependencies,
@@ -291,7 +270,6 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               null,
               dependencies,
             );
-
             await runStep(
               'When I tap on login button',
               <String>[],
