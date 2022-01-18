@@ -3,7 +3,7 @@ import 'screens/welcome_screen.dart';
 import 'package:pocwatchapp/screens/welcome_screen.dart';
 import 'package:pocwatchapp/utilities/constants.dart';
 
-void main() {
+Future<void> main() async {
   runApp(MyApp());
 }
 
@@ -16,9 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: kPrimaryColor,
-
       ),
-    home: WelcomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -6,8 +6,8 @@ Scenario: Adding new watches to the product list
   Given the app is running fine
   When I tap the Next button
   Then I see the login screen
-  And I enter the username 'user'
-  And I enter the password 'password'
+  And I enter the username 'user1'
+  And I enter the password 'password1'
   When I tap on login button
   Then I successfully login to see homescreen
   When I tap on Add icon

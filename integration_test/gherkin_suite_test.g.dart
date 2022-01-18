@@ -9,7 +9,7 @@ part of 'gherkin_suite_test.dart';
 class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
   _CustomGherkinIntegrationTestRunner(
     TestConfiguration configuration,
-    void Function(World) appMainFunction,
+    Future<void> Function(World) appMainFunction,
   ) : super(configuration, appMainFunction);
 
   @override
@@ -23,7 +23,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
     runFeature(
       'Adding New Products Test:',
       <String>['@addProduct'],
-      () async {
+      () {
         runScenario(
           'Adding new watches to the product list',
           <String>['@addProduct'],
@@ -50,14 +50,14 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             );
 
             await runStep(
-              'And I enter the username \'user\'',
+              'And I enter the username \'user1\'',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter the password \'password\'',
+              'And I enter the password \'password1\'',
               <String>[],
               null,
               dependencies,
@@ -133,6 +133,13 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: () async => onBeforeRunFeature(
+            'Adding New Products Test',
+            <String>['@addProduct'],
+          ),
+          onAfter: () async => onAfterRunFeature(
+            'Adding New Products Test',
+          ),
         );
       },
     );
@@ -140,107 +147,9 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
   void testFeature1() {
     runFeature(
-      'Add/Remove From Cart Test:',
-      <String>['@cartTest'],
-      () async {
-        runScenario(
-          'Adding and removing products from the cart',
-          <String>['@cartTest'],
-          (TestDependencies dependencies) async {
-            await runStep(
-              'Given the app is running fine',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap the Next button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see the login screen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the username \'user\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'And I enter the password \'password\'',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on login button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I successfully login to see homescreen',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I add product at index 3 to the cart',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on cart icon',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I see cart page',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'When I tap on Remove from Cart button',
-              <String>[],
-              null,
-              dependencies,
-            );
-
-            await runStep(
-              'Then I validate cart is empty',
-              <String>[],
-              null,
-              dependencies,
-            );
-          },
-        );
-      },
-    );
-  }
-
-  void testFeature2() {
-    runFeature(
       'Login Test:',
       <String>['@loginTest'],
-      () async {
+      () {
         runScenario(
           'Validate login with blank input',
           <String>['@loginTest'],
@@ -280,6 +189,11 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: () async => onBeforeRunFeature(
+            'Login Test',
+            <String>['@loginTest'],
+          ),
+          onAfter: null,
         );
 
         runScenario(
@@ -335,6 +249,8 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: null,
+          onAfter: null,
         );
 
         runScenario(
@@ -390,6 +306,115 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
               dependencies,
             );
           },
+          onBefore: null,
+          onAfter: () async => onAfterRunFeature(
+            'Login Test',
+          ),
+        );
+      },
+    );
+  }
+
+  void testFeature2() {
+    runFeature(
+      'Add/Remove From Cart Test:',
+      <String>['@cartTest'],
+      () {
+        runScenario(
+          'Adding and removing products from the cart',
+          <String>['@cartTest'],
+          (TestDependencies dependencies) async {
+            await runStep(
+              'Given the app is running fine',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap the Next button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see the login screen',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the username \'user1\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'And I enter the password \'password1\'',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on login button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I successfully login to see homescreen',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I add product at index 3 to the cart',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on cart icon',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I see cart page',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'When I tap on Remove from Cart button',
+              <String>[],
+              null,
+              dependencies,
+            );
+
+            await runStep(
+              'Then I validate cart is empty',
+              <String>[],
+              null,
+              dependencies,
+            );
+          },
+          onBefore: () async => onBeforeRunFeature(
+            'Add/Remove From Cart Test',
+            <String>['@cartTest'],
+          ),
+          onAfter: () async => onAfterRunFeature(
+            'Add/Remove From Cart Test',
+          ),
         );
       },
     );
@@ -398,7 +423,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
 void executeTestSuite(
   TestConfiguration configuration,
-  void Function(World) appMainFunction,
+  Future<void> Function(World) appMainFunction,
 ) {
   _CustomGherkinIntegrationTestRunner(configuration, appMainFunction).run();
 }

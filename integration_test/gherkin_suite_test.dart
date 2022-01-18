@@ -41,9 +41,9 @@ void main() {
       theISeeAlertPopupWithMessage,
     ])
       ..reporters = [
-        // StdoutReporter(MessageLevel.error)
-        //   ..setWriteLineFn(print)
-        //   ..setWriteFn(print),
+        StdoutReporter(MessageLevel.error)
+          ..setWriteLineFn(print)
+          ..setWriteFn(print),
         ProgressReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
