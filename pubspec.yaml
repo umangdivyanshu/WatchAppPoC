@@ -27,7 +27,7 @@ dependencies:
 
 dev_dependencies:
   build_runner: ^2.1.5
-  flutter_gherkin: ^3.0.0-rc.6
+  flutter_gherkin: ^3.0.0-rc.9
   flutter_test:
     sdk: flutter
   integration_test:
