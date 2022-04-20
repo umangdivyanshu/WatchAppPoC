@@ -11,17 +11,12 @@ final thenIAddProductToCart = then1<int, FlutterWidgetTesterWorld>(
   (index, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //adding products to the cart
-      await tester.tap(find.byType(ElevatedButton).at((index - 1)));
-      await tester.pumpAndSettle(Duration(seconds: 1));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //adding products to the cart
+    await tester.tap(find.byType(ElevatedButton).at((index - 1)));
+    await tester.pumpAndSettle(Duration(seconds: 1));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapAddIcon = when<FlutterWidgetTesterWorld>(
@@ -29,16 +24,11 @@ final whenITapAddIcon = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      await tester.tap(find.byIcon(Icons.add));
-      await tester.pumpAndSettle(Duration(seconds: 1));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pumpAndSettle(Duration(seconds: 1));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapCartIcon = when<FlutterWidgetTesterWorld>(
@@ -46,21 +36,16 @@ final whenITapCartIcon = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //tapping on cart icon
-      final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
-      await gesture.addPointer(location: Offset.zero);
-      addTearDown(gesture.removePointer);
-      await tester.pump();
-      await gesture
-          .moveTo(tester.getCenter(find.byKey(ValueKey('cartIcon'))))
-          .then((value) => tester.tap(find.byKey(ValueKey('cartIcon'))));
-      await tester.pumpAndSettle(Duration(seconds: 1));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //tapping on cart icon
+    final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
+    await gesture.addPointer(location: Offset.zero);
+    addTearDown(gesture.removePointer);
+    await tester.pump();
+    await gesture
+        .moveTo(tester.getCenter(find.byKey(ValueKey('cartIcon'))))
+        .then((value) => tester.tap(find.byKey(ValueKey('cartIcon'))));
+    await tester.pumpAndSettle(Duration(seconds: 1));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );

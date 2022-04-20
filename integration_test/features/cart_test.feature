@@ -1,12 +1,12 @@
-@cartTest
 Feature: Add/Remove From Cart Test
 
+@addToCart
 Scenario: Adding and removing products from the cart
   Given the app is running fine
   When I tap the Next button
   Then I see the login screen
-  And I enter the username 'user1'
-  And I enter the password 'password1'
+  And I enter the username 'user'
+  And I enter the password 'password'
   When I tap on login button
   Then I successfully login to see homescreen
   Then I add product at index 3 to the cart

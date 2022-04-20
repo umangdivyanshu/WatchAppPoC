@@ -4,27 +4,24 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pocwatchapp/screens/home_screen.dart';
-import 'package:pocwatchapp/screens/login_screen.dart';
+
+import '../pageObjects/page_objects_login_page.dart';
+import '../pageObjects/page_objects_welcome_page.dart';
+
+final welcomePage = WelcomePage();
+final loginPage = LoginPage();
 
 final thenISeeLoginScreen = then<FlutterWidgetTesterWorld>(
   'I see the login screen',
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating user has moved to Login Page
-      expect(
-          find.text(
-              'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-          findsNothing);
-      expect(find.byType(LoginScreen), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //validating user has moved to Login Page
+    expect(welcomePage.welcomeMessage, findsNothing);
+    expect(loginPage.loginScreen, findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapLoginButton = when<FlutterWidgetTesterWorld>(
@@ -32,18 +29,12 @@ final whenITapLoginButton = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //tapping login button
-      var loginBtn = find.byKey(ValueKey('LoginSubmitBtnKey'));
-      await tester.tap(loginBtn);
-      await tester.pumpAndSettle();
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //tapping login button
+    await tester.tap(loginPage.loginBtn);
+    await tester.pumpAndSettle();
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final thenISeeErrorMessageForBlankInput = then<FlutterWidgetTesterWorld>(
@@ -51,19 +42,14 @@ final thenISeeErrorMessageForBlankInput = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating error messages and current state
-      await tester.pump(const Duration(seconds: 1));
-      expect(find.text('Email id is required.'), findsOneWidget);
-      expect(find.text('Password is required.'), findsOneWidget);
-      expect(find.byType(LoginScreen), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //validating error messages and current state
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.text('Email id is required.'), findsOneWidget);
+    expect(find.text('Password is required.'), findsOneWidget);
+    expect(loginPage.loginScreen, findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterUsername = and1<String, FlutterWidgetTesterWorld>(
@@ -71,16 +57,10 @@ final andIEnterUsername = and1<String, FlutterWidgetTesterWorld>(
   (uname, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      var emailInput = find.byKey(ValueKey('loginTxtKey'));
-      await tester.enterText(emailInput, uname);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    await tester.enterText(loginPage.emailInput, uname);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterPassword = and1<String, FlutterWidgetTesterWorld>(
@@ -88,17 +68,11 @@ final andIEnterPassword = and1<String, FlutterWidgetTesterWorld>(
   (passwd, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //entering password
-      var passwordInput = find.byKey(ValueKey('passwordTxtKey'));
-      await tester.enterText(passwordInput, passwd);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //entering password
+    await tester.enterText(loginPage.passwordInput, passwd);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final thenISeeErrorMessageForInvalidInput = then<FlutterWidgetTesterWorld>(
@@ -106,19 +80,14 @@ final thenISeeErrorMessageForInvalidInput = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating error messages and current state
-      await tester.pump(const Duration(seconds: 1));
-      expect(find.text('Incorrect Email'), findsOneWidget);
-      expect(find.text('Incorrect password'), findsOneWidget);
-      expect(find.byType(LoginScreen), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //validating error messages and current state
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.text('Incorrect Email'), findsOneWidget);
+    expect(find.text('Incorrect password'), findsOneWidget);
+    expect(loginPage.loginScreen, findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final thenISuccessfullyLoginToHomescreen = then<FlutterWidgetTesterWorld>(
@@ -126,16 +95,11 @@ final thenISuccessfullyLoginToHomescreen = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    // try {
     //validating succesful login and current state
     expect(find.text('Email id is required.'), findsNothing);
     expect(find.text('Password is required.'), findsNothing);
     expect(find.byType(HomeScreen), findsOneWidget);
-    // } on FlutterError {
-    //   // pump for 2 seconds and stop
-    //   await tester.pump(const Duration(seconds: 2));
-    // }
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );

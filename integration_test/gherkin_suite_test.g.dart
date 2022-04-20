@@ -22,11 +22,11 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
   void testFeature0() {
     runFeature(
       'Login Test:',
-      <String>['@loginTest'],
+      <String>[],
       () {
         runScenario(
           'Validate login with blank input',
-          <String>['@loginTest'],
+          <String>['@login'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -65,14 +65,14 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
           },
           onBefore: () async => onBeforeRunFeature(
             'Login Test',
-            <String>['@loginTest'],
+            <String>[],
           ),
           onAfter: null,
         );
 
         runScenario(
           'Validate login with invalid credentials',
-          <String>['@loginTest'],
+          <String>['@login'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -129,7 +129,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
         runScenario(
           'Validate login with valid credentials',
-          <String>['@loginTest'],
+          <String>['@login'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -153,14 +153,14 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             );
 
             await runStep(
-              'And I enter the username \'user\'',
+              'And I enter the username \'user123\'',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter the password \'password\'',
+              'And I enter the password \'password123\'',
               <String>[],
               null,
               dependencies,
@@ -192,11 +192,11 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
   void testFeature1() {
     runFeature(
       'Adding New Products Test:',
-      <String>['@addProduct'],
+      <String>[],
       () {
         runScenario(
           'Adding new watches to the product list',
-          <String>['@addProduct'],
+          <String>['@addWatch'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -305,7 +305,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
           },
           onBefore: () async => onBeforeRunFeature(
             'Adding New Products Test',
-            <String>['@addProduct'],
+            <String>[],
           ),
           onAfter: () async => onAfterRunFeature(
             'Adding New Products Test',
@@ -318,11 +318,11 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
   void testFeature2() {
     runFeature(
       'Add/Remove From Cart Test:',
-      <String>['@cartTest'],
+      <String>[],
       () {
         runScenario(
           'Adding and removing products from the cart',
-          <String>['@cartTest'],
+          <String>['@addToCart'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -346,14 +346,14 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
             );
 
             await runStep(
-              'And I enter the username \'user1\'',
+              'And I enter the username \'user\'',
               <String>[],
               null,
               dependencies,
             );
 
             await runStep(
-              'And I enter the password \'password1\'',
+              'And I enter the password \'password\'',
               <String>[],
               null,
               dependencies,
@@ -410,7 +410,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
           },
           onBefore: () async => onBeforeRunFeature(
             'Add/Remove From Cart Test',
-            <String>['@cartTest'],
+            <String>[],
           ),
           onAfter: () async => onAfterRunFeature(
             'Add/Remove From Cart Test',

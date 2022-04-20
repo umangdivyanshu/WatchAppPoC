@@ -10,17 +10,12 @@ final thenISeeCartPage = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating user has moved to Cart Page
-      expect(find.byType(ProductCartPage), findsOneWidget);
-      expect(find.text('Remove from Cart'), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //validating user has moved to Cart Page
+    expect(find.byType(ProductCartPage), findsOneWidget);
+    expect(find.text('Remove from Cart'), findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapRemoveFromCartButton = when<FlutterWidgetTesterWorld>(
@@ -28,17 +23,12 @@ final whenITapRemoveFromCartButton = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //removing the product from the cart
-      await tester.tap(find.byType(ElevatedButton).first);
-      await tester.pumpAndSettle(Duration(seconds: 1));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //removing the product from the cart
+    await tester.tap(find.byType(ElevatedButton).first);
+    await tester.pumpAndSettle(Duration(seconds: 1));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final thenIValidateCartIsEmpty = then<FlutterWidgetTesterWorld>(
@@ -46,14 +36,9 @@ final thenIValidateCartIsEmpty = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //validating item has been removed from the cart
-      expect(find.text('Cart is Empty'), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    //validating item has been removed from the cart
+    expect(find.text('Cart is Empty'), findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );

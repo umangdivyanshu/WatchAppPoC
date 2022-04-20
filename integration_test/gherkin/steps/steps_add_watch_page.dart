@@ -10,15 +10,10 @@ final thenISeeFormToAddWatches = then<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      expect(find.byType(MyCustomForm), findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    expect(find.byType(MyCustomForm), findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterWatchDescription = and1<String, FlutterWidgetTesterWorld>(
@@ -26,16 +21,11 @@ final andIEnterWatchDescription = and1<String, FlutterWidgetTesterWorld>(
   (wdescription, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      final inputWatchDescription = find.byKey(ValueKey('watchDescription'));
-      await tester.enterText(inputWatchDescription, wdescription);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    final inputWatchDescription = find.byKey(ValueKey('watchDescription'));
+    await tester.enterText(inputWatchDescription, wdescription);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterWatchImagePath = and1<String, FlutterWidgetTesterWorld>(
@@ -43,16 +33,11 @@ final andIEnterWatchImagePath = and1<String, FlutterWidgetTesterWorld>(
   (wimgpath, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      final inputImage = find.byKey(ValueKey('watchImage'));
-      await tester.enterText(inputImage, wimgpath);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    final inputImage = find.byKey(ValueKey('watchImage'));
+    await tester.enterText(inputImage, wimgpath);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterWatchPrice = and1<String, FlutterWidgetTesterWorld>(
@@ -60,16 +45,11 @@ final andIEnterWatchPrice = and1<String, FlutterWidgetTesterWorld>(
   (wprice, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      final inputWatchPrice = find.byKey(ValueKey('watchPrice'));
-      await tester.enterText(inputWatchPrice, wprice);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    final inputWatchPrice = find.byKey(ValueKey('watchPrice'));
+    await tester.enterText(inputWatchPrice, wprice);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final andIEnterWatchTitle = and1<String, FlutterWidgetTesterWorld>(
@@ -77,16 +57,11 @@ final andIEnterWatchTitle = and1<String, FlutterWidgetTesterWorld>(
   (wtitle, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      final inputWatchTitle = find.byKey(ValueKey('watchTitle'));
-      await tester.enterText(inputWatchTitle, wtitle);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    final inputWatchTitle = find.byKey(ValueKey('watchTitle'));
+    await tester.enterText(inputWatchTitle, wtitle);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final theISeeAlertPopupWithMessage = then1<String, FlutterWidgetTesterWorld>(
@@ -94,16 +69,11 @@ final theISeeAlertPopupWithMessage = then1<String, FlutterWidgetTesterWorld>(
   (popupMessage, context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      expect(find.text(popupMessage), findsOneWidget);
-      await tester.pumpAndSettle(Duration(seconds: 2));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    expect(find.text(popupMessage), findsOneWidget);
+    await tester.pumpAndSettle(Duration(seconds: 2));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapSaveButton = when<FlutterWidgetTesterWorld>(
@@ -111,15 +81,10 @@ final whenITapSaveButton = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      await tester.pumpAndSettle(Duration(seconds: 1));
-      await tester.tap(find.byType(TextButton).first);
-      await tester.pumpAndSettle(Duration(seconds: 2));
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    await tester.pumpAndSettle(Duration(seconds: 1));
+    await tester.tap(find.byType(TextButton).first);
+    await tester.pumpAndSettle(Duration(seconds: 2));
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );

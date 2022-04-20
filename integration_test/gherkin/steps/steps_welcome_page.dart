@@ -9,19 +9,14 @@ final givenAppIsRunningFine = given<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      print('App launched');
-      expect(
-          find.text(
-              'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
-          findsOneWidget);
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    print('App launched');
+    expect(
+        find.text(
+            'This is a watch shopping app in which you can browser different watches, add to cart, add new products'),
+        findsOneWidget);
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
 
 final whenITapNextButton = when<FlutterWidgetTesterWorld>(
@@ -29,16 +24,11 @@ final whenITapNextButton = when<FlutterWidgetTesterWorld>(
   (context) async {
     final tester = context.world.rawAppDriver;
 
-    try {
-      //identifying using widget type
+    //identifying using widget type
 
-      await tester.tap(find.byType(ElevatedButton));
-      await tester.pumpAndSettle();
-    } on FlutterError {
-      // pump for 2 seconds and stop
-      await tester.pump(const Duration(seconds: 2));
-    }
+    await tester.tap(find.byType(ElevatedButton));
+    await tester.pumpAndSettle();
   },
   configuration: StepDefinitionConfiguration()
-    ..timeout = const Duration(minutes: 5),
+    ..timeout = const Duration(minutes: 1),
 );
