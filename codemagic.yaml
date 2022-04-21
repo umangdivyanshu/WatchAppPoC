@@ -41,7 +41,7 @@ workflows:
           - udivyanshu8@gmail.com
           - narayansiddharth@gmail.com
   iOSFirebase-workflow:
-    name: Web Workflow
+    name: iOSFirebase Workflow
     max_build_duration: 30
     environment:
       vars:
