@@ -39,12 +39,15 @@ void main() {
       andIEnterWatchImagePath,
       whenITapSaveButton,
       theISeeAlertPopupWithMessage,
+      thenISeeErrorMessageForInvalidUsername,
+      thenISeeErrorMessageForInvalidPassword,
     ])
-      ..tagExpression = '@login'
+      //..order = ExecutionOrder.alphabetical
+      ..tagExpression = '@login or @addWatch'
       ..reporters = [
-        // StdoutReporter(MessageLevel.error)
-        //   ..setWriteLineFn(print)
-        //   ..setWriteFn(print),
+        StdoutReporter(MessageLevel.error)
+          ..setWriteLineFn(print)
+          ..setWriteFn(print),
         ProgressReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),

@@ -10,4 +10,20 @@ class LoginPage {
   final Finder emailInput = find.byKey(ValueKey('loginTxtKey'));
 
   final Finder passwordInput = find.byKey(ValueKey('passwordTxtKey'));
+
+  Finder getLoginScreen() {
+    return loginScreen;
+  }
+
+  Finder getLoginBtn() {
+    return loginBtn;
+  }
+
+  Finder getEmailInput() {
+    return emailInput;
+  }
+
+  Finder getPasswordInput() {
+    return passwordInput;
+  }
 }

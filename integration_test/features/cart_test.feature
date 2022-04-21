@@ -1,7 +1,7 @@
 Feature: Add/Remove From Cart Test
 
 @addToCart
-Scenario: Adding and removing products from the cart
+Scenario: Adding and removing products from the cart(TC002)
   Given the app is running fine
   When I tap the Next button
   Then I see the login screen

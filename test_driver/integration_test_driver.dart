@@ -1,17 +1,17 @@
-import 'dart:io';
+//import 'dart:io';
 
-import 'package:flutter_driver/flutter_driver.dart';
+//import 'package:flutter_driver/flutter_driver.dart';
 import 'package:integration_test/integration_test_driver.dart'
     as integration_test_driver;
 
-DriverLogCallback logDriverMessages = (String source, String message) {
-  final msg = '$source: $message';
-  if (message.toLowerCase().contains('error')) {
-    stderr.writeln(msg);
-  } else {
-    stdout.writeln(msg);
-  }
-};
+// DriverLogCallback logDriverMessages = (String source, String message) {
+//   final msg = '$source: $message';
+//   if (message.toLowerCase().contains('error')) {
+//     stderr.writeln(msg);
+//   } else {
+//     stdout.writeln(msg);
+//   }
+// };
 
 Future<void> main() {
   // Flutter Driver logs all messages to stderr by default so if this is run on a build server

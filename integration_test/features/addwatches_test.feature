@@ -1,7 +1,7 @@
 Feature: Adding New Products Test
 
 @addWatch
-Scenario: Adding new watches to the product list
+Scenario: Adding new watches to the product list(TC001)
   Given the app is running fine
   When I tap the Next button
   Then I see the login screen
