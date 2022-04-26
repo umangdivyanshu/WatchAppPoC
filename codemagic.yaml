@@ -23,8 +23,8 @@ workflows:
       - keychain add-certificates
       - xcode-project use-profiles
       - |
-        cd $FCI_BUILD_DIR
-
+        cd $CM_BUILD_DIR
+        echo "$CM_BUILD_DIR"
         flutter clean
         flutter pub get
         flutter doctor
@@ -33,10 +33,10 @@ workflows:
         pod install --repo-update
         cd ..
 
-        flutter build ios "$FCI_BUILD_DIR/integration_test/gherkin_suite_test.dart" --release
+        flutter build ios "$CM_BUILD_DIR/integration_test/gherkin_suite_test.dart" --release
 
         pushd iOS
-        xcodebuild -workspace Runner.xcworkspace -scheme Runner -config Flutter/Release.xcconfig -derivedDataPath "$FCI_BUILD_DIR/build/ios_integ" -sdk iphoneos build-for-testing
+        xcodebuild -workspace Runner.xcworkspace -scheme Runner -config Flutter/Release.xcconfig -derivedDataPath "$CM_BUILD_DIR/build/ios_integ" -sdk iphoneos build-for-testing
         popd
 
         pushd build/ios_integ/Build/Products
@@ -49,12 +49,13 @@ workflows:
 
         gcloud --quiet config set project watchapptest-582021
 
-        gcloud firebase test ios run --test "$FCI_BUILD_DIR/build/ios_integ/Build/Products/ios_tests.zip" --device model=iphone11pro,version=14.7,locale=en_US,orientation=portrait --timeout 40m
+        gcloud firebase test ios run --test "$CM_BUILD_DIR/build/ios_integ/Build/Products/ios_tests.zip" --device model=iphone11pro,version=14.7,locale=en_US,orientation=portrait --timeout 20m
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
       - '*.snap'
       - build/ios_integ/Build/Products/ios_tests.zip
+      - build/ios_integ/Build/Products/*
       - flutter_drive.log
     publishing:
       email:
