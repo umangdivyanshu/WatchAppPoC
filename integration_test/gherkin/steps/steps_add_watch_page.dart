@@ -22,6 +22,7 @@ final andIEnterWatchDescription = and1<String, FlutterWidgetTesterWorld>(
     final tester = context.world.rawAppDriver;
 
     final inputWatchDescription = find.byKey(ValueKey('watchDescription'));
+    tester.testTextInput.register();
     await tester.enterText(inputWatchDescription, wdescription);
   },
   configuration: StepDefinitionConfiguration()
@@ -34,6 +35,7 @@ final andIEnterWatchImagePath = and1<String, FlutterWidgetTesterWorld>(
     final tester = context.world.rawAppDriver;
 
     final inputImage = find.byKey(ValueKey('watchImage'));
+    tester.testTextInput.register();
     await tester.enterText(inputImage, wimgpath);
   },
   configuration: StepDefinitionConfiguration()
@@ -46,6 +48,7 @@ final andIEnterWatchPrice = and1<String, FlutterWidgetTesterWorld>(
     final tester = context.world.rawAppDriver;
 
     final inputWatchPrice = find.byKey(ValueKey('watchPrice'));
+    tester.testTextInput.register();
     await tester.enterText(inputWatchPrice, wprice);
   },
   configuration: StepDefinitionConfiguration()
@@ -58,6 +61,7 @@ final andIEnterWatchTitle = and1<String, FlutterWidgetTesterWorld>(
     final tester = context.world.rawAppDriver;
 
     final inputWatchTitle = find.byKey(ValueKey('watchTitle'));
+    tester.testTextInput.register();
     await tester.enterText(inputWatchTitle, wtitle);
   },
   configuration: StepDefinitionConfiguration()

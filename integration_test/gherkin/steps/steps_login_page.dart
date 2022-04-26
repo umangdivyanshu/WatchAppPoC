@@ -58,7 +58,7 @@ final andIEnterUsername = and1<String, FlutterWidgetTesterWorld>(
   'I enter the username {String}',
   (uname, context) async {
     final tester = context.world.rawAppDriver;
-
+    tester.testTextInput.register();
     await tester.enterText(loginPage.getEmailInput(), uname);
   },
   configuration: StepDefinitionConfiguration()
@@ -71,6 +71,7 @@ final andIEnterPassword = and1<String, FlutterWidgetTesterWorld>(
     final tester = context.world.rawAppDriver;
 
     //entering password
+    tester.testTextInput.register();
     await tester.enterText(loginPage.getPasswordInput(), passwd);
   },
   configuration: StepDefinitionConfiguration()
