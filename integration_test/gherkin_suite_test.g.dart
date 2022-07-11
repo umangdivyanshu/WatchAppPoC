@@ -26,7 +26,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
       () {
         runScenario(
           'Validate login with blank input',
-          <String>['@login'],
+          <String>['@login', '@3'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -72,7 +72,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
         runScenario(
           'Validate login with invalid credentials',
-          <String>['@login'],
+          <String>['@login', '@4'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -129,7 +129,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
 
         runScenario(
           'Validate login with valid credentials',
-          <String>['@login'],
+          <String>['@login', '@5'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -196,7 +196,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
       () {
         runScenario(
           'Adding new watches to the product list',
-          <String>['@addWatch'],
+          <String>['@addWatch', '@1'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',
@@ -322,7 +322,7 @@ class _CustomGherkinIntegrationTestRunner extends GherkinIntegrationTestRunner {
       () {
         runScenario(
           'Adding and removing products from the cart',
-          <String>['@addToCart'],
+          <String>['@addToCart', '@2'],
           (TestDependencies dependencies) async {
             await runStep(
               'Given the app is running fine',

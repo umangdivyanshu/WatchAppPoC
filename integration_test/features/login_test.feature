@@ -1,6 +1,6 @@
 Feature: Login Test
 
-@login
+@login @3
 Scenario: Validate login with blank input
   Given the app is running fine
   When I tap the Next button
@@ -8,7 +8,7 @@ Scenario: Validate login with blank input
   When I tap on login button
   Then I see error messages for blank input
 
-@login
+@login @4
 Scenario: Validate login with invalid credentials
   Given the app is running fine
   When I tap the Next button
@@ -18,7 +18,7 @@ Scenario: Validate login with invalid credentials
   When I tap on login button
   Then I see error messages for invalid input
 
-@login
+@login @5
 Scenario: Validate login with valid credentials
   Given the app is running fine
   When I tap the Next button

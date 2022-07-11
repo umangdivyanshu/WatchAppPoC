@@ -1,6 +1,6 @@
 Feature: Add/Remove From Cart Test
 
-@addToCart
+@addToCart @2
 Scenario: Adding and removing products from the cart
   Given the app is running fine
   When I tap the Next button

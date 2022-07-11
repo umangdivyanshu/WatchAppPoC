@@ -1,6 +1,6 @@
 Feature: Adding New Products Test
 
-@addWatch
+@addWatch @1
 Scenario: Adding new watches to the product list
   Given the app is running fine
   When I tap the Next button

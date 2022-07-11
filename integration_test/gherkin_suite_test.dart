@@ -40,11 +40,11 @@ void main() {
       whenITapSaveButton,
       theISeeAlertPopupWithMessage,
     ])
-      ..tagExpression = '@login'
+      ..tagExpression = '@1 or @2 or @5'
       ..reporters = [
-        // StdoutReporter(MessageLevel.error)
-        //   ..setWriteLineFn(print)
-        //   ..setWriteFn(print),
+        StdoutReporter(MessageLevel.error)
+          ..setWriteLineFn(print)
+          ..setWriteFn(print),
         ProgressReporter()
           ..setWriteLineFn(print)
           ..setWriteFn(print),
